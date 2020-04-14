@@ -61,6 +61,14 @@ PPLCompendiumBrowser class >> taskbarIcon [
 	^self icon
 ]
 
+{ #category : #defaults }
+PPLCompendiumBrowser >> aboutText [
+
+	^'PHARO COMPENDIUM
+
+(c) 2020 by T.Bergmann, astares.com'
+]
+
 { #category : #'private - building - menues' }
 PPLCompendiumBrowser >> buildCompendiumMenu [
 
@@ -133,14 +141,16 @@ PPLCompendiumBrowser >> menu: anObject [
 PPLCompendiumBrowser >> openAbout [
 	"Give some infos on the receiver"
 	
-	self inform: 'Compendium'
+	| dialog |
+	dialog := AboutDialogWindow new entryText: self aboutText.
+	dialog open
 ]
 
 { #category : #actions }
 PPLCompendiumBrowser >> openHelp [
 	"Open the help system"
 	
-	HelpBrowser open
+	CompendiumHelp open
 ]
 
 { #category : #actions }
