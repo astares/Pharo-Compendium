@@ -5,6 +5,7 @@ Class {
 	#name : #PHCArtifact,
 	#superclass : #Object,
 	#instVars : [
+		'id',
 		'name',
 		'description'
 	],
