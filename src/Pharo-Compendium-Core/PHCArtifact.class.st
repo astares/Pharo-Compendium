@@ -44,6 +44,28 @@ PHCArtifact >> description: anObject [
 ]
 
 { #category : #accessing }
+PHCArtifact >> id [
+	^ id
+]
+
+{ #category : #accessing }
+PHCArtifact >> id: anObject [
+	id := anObject
+]
+
+{ #category : #'private - initialization' }
+PHCArtifact >> initUniqueID [
+
+	id := UUID new asString copyReplaceAll: '-' with: ''
+]
+
+{ #category : #initialization }
+PHCArtifact >> initialize [
+	super initialize.
+	self initUniqueID
+]
+
+{ #category : #accessing }
 PHCArtifact >> name [
 	"Return the name of the receiver"
 	

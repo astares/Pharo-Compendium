@@ -20,6 +20,12 @@ PHCArtifactTest >> testDefaultName [
 ]
 
 { #category : #tests }
+PHCArtifactTest >> testInitializedWithUUID [
+
+	self assert: artifact id size equals: 32
+]
+
+{ #category : #tests }
 PHCArtifactTest >> testInstanceCreation [
 
 	self assert: (PHCArtifact named: 'New Artifact') name equals: 'New Artifact'
