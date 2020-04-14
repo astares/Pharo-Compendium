@@ -156,7 +156,7 @@ PPLCompendiumBrowser >> openHelp [
 { #category : #actions }
 PPLCompendiumBrowser >> openSettings [ 
 
-	SettingBrowser open
+	PHCCompendiumSettings openSettings 
 ]
 
 { #category : #accessing }
