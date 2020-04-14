@@ -100,10 +100,29 @@ PPLCompendiumBrowser >> buildMenuBar [
 						subMenu: self buildHelpMenu ] ]
 ]
 
+{ #category : #'private - building - toolbar' }
+PPLCompendiumBrowser >> buildSettingsToolBarItem [
+		
+	^ SpToolBarButton new
+		label: 'Settings';
+		icon: (SettingBrowser iconNamed: #smallConfigurationIcon);
+		help: 'Open terminal';
+		action: [ self openSettings ];
+		yourself
+]
+
 { #category : #'private - building' }
 PPLCompendiumBrowser >> buildStatusBar [
 
 	^ SpStatusBarPresenter new
+]
+
+{ #category : #'private - building' }
+PPLCompendiumBrowser >> buildToolBar [
+	
+	^ self newToolBar 
+		addItem: self buildSettingsToolBarItem;		 			
+		yourself
 ]
 
 { #category : #defaults }
@@ -121,7 +140,7 @@ PPLCompendiumBrowser >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter
 		menu: (menu := self buildMenuBar);
-		"toolBar: (toolBar := self buildToolBar);"
+		toolBar: (toolBar := self buildToolBar);
 		statusBar: (statusBar := self buildStatusBar).
 
 	self statusBar pushMessage: 'Ready'	
