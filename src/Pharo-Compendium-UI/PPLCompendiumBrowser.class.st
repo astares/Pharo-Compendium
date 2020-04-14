@@ -4,17 +4,33 @@ Main UI window for the library browser
 Class {
 	#name : #PPLCompendiumBrowser,
 	#superclass : #SpPresenter,
+	#instVars : [
+		'menu',
+		'statusBar',
+		'toolBar'
+	],
 	#category : #'Pharo-Compendium-UI-Windows'
 }
 
 { #category : #specs }
 PPLCompendiumBrowser class >> defaultSpec [
+	"Return a default spec for the UI layout"
+	
 	^ SpBoxLayout newVertical  
 ]
 
+{ #category : #accessing }
+PPLCompendiumBrowser class >> icon [
+	"Return an icon suitable for representing the receiver class and instances"
+	
+	^self iconNamed: #catalogIcon
+]
+
 { #category : #'world menu' }
-PPLCompendiumBrowser class >> menuCommandOn: aBuilder [ 
+PPLCompendiumBrowser class >> menuCommandOn: aBuilder [
+	"Register within the world menu"
 	<worldMenu> 
+	
 	(aBuilder item: #'Compendium Browser')
 		parent: #'Tools';
 		help: 'Pharo Compendium';
@@ -31,13 +47,131 @@ PPLCompendiumBrowser class >> open [
 	self new openWithSpec
 ]
 
+{ #category : #accessing }
+PPLCompendiumBrowser class >> systemIcon [
+	"Return an icon used to display the receiver class within a system browser"
+	
+	^self icon
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser class >> taskbarIcon [
+	"Return an icon used to display the receivers instances in the Pharo taskbar"
+
+	^self icon
+]
+
+{ #category : #'private - building - menues' }
+PPLCompendiumBrowser >> buildCompendiumMenu [
+
+	^self newMenu
+		addItem: [ :item | item name: 'Settings'; action: [ self openSettings ] ];	 
+		yourself
+]
+
+{ #category : #'private - building - menues' }
+PPLCompendiumBrowser >> buildHelpMenu [
+
+	^ self newMenu
+		addItem: [ :item | item name: 'Help'; action: [ 	self openHelp ] ];
+		addItem: [ :item | item name: 'About'; action: [ 	self openAbout ] ];	 
+		yourself
+]
+
+{ #category : #'private - building' }
+PPLCompendiumBrowser >> buildMenuBar [
+	^ self newMenuBar
+		addGroup: [ :group | 
+			group addItem: [ :item | 
+					item
+						name: 'Compendium';
+						subMenu: self buildCompendiumMenu ].
+			group addItem: [ :item | 
+					item
+						name: 'Help';
+						subMenu: self buildHelpMenu ] ]
+]
+
+{ #category : #'private - building' }
+PPLCompendiumBrowser >> buildStatusBar [
+
+	^ SpStatusBarPresenter new
+]
+
 { #category : #defaults }
-PPLCompendiumBrowser >> initialExtent [ 
+PPLCompendiumBrowser >> initialExtent [
+	"Return an initial extent when the receiver opens standalone"
+	
 	^ 700 @ 500
 ]
 
 { #category : #defaults }
-PPLCompendiumBrowser >> title [ 
+PPLCompendiumBrowser >> initializeWindow: aWindowPresenter [
+	"I'm called whenever the component will be displayed in a window (or dialog). 
+	 This is usually attained sending #openWithSpec or #openDialogWithSpec."
+	
+	super initializeWindow: aWindowPresenter.
+	aWindowPresenter
+		menu: (menu := self buildMenuBar);
+		"toolBar: (toolBar := self buildToolBar);"
+		statusBar: (statusBar := self buildStatusBar).
+
+	self statusBar pushMessage: 'Ready'	
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> menu [
+	^ menu
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> menu: anObject [
+	^ menu := anObject
+]
+
+{ #category : #actions }
+PPLCompendiumBrowser >> openAbout [
+	"Give some infos on the receiver"
+	
+	self inform: 'Compendium'
+]
+
+{ #category : #actions }
+PPLCompendiumBrowser >> openHelp [
+	"Open the help system"
+	
+	HelpBrowser open
+]
+
+{ #category : #actions }
+PPLCompendiumBrowser >> openSettings [ 
+
+	SettingBrowser open
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> statusBar [
+	^ statusBar
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> statusBar: anObject [
+	^ statusBar := anObject
+]
+
+{ #category : #defaults }
+PPLCompendiumBrowser >> title [
+	"Return a title for the receivers standalone window"
 
    ^'Pharo Compendium'
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> toolBar [
+	^ toolBar
+]
+
+{ #category : #accessing }
+PPLCompendiumBrowser >> toolBar: anObject [
+	toolBar := anObject
 ]
