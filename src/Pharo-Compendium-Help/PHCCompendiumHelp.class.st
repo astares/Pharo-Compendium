@@ -2,20 +2,26 @@
 Help book for Compendium
 "
 Class {
-	#name : #CompendiumHelp,
+	#name : #PHCCompendiumHelp,
 	#superclass : #CustomHelp,
 	#category : #'Pharo-Compendium-Help-Base'
 }
 
 { #category : #accessing }
-CompendiumHelp class >> bookName [
+PHCCompendiumHelp class >> bookName [
 	"Return the name of the help book"
 
-	^ 'Pharo Compendium'
+	^ 'Compendium'
+]
+
+{ #category : #'class initialization' }
+PHCCompendiumHelp class >> initialize [
+
+	self resetSystemHelp
 ]
 
 { #category : #'accessing - pages' }
-CompendiumHelp class >> intro [
+PHCCompendiumHelp class >> intro [
 	^ HelpTopic 
 		title: 'Compendium'
 		contents: (self heading: 'Compendium Introduction'),
@@ -31,12 +37,19 @@ Compendium Repository:
 ]
 
 { #category : #showing }
-CompendiumHelp class >> open [
+PHCCompendiumHelp class >> open [
 	<script>
 	^ (HelpBrowser openOn: self) next
 ]
 
 { #category : #showing }
-CompendiumHelp class >> pages [
+PHCCompendiumHelp class >> pages [
 	^ #(intro)
+]
+
+{ #category : #'private - initialization' }
+PHCCompendiumHelp class >> resetSystemHelp [
+	"Reset the (cached) system help so we appear there too"
+	<script>
+	SystemHelp resetHelpTopic
 ]

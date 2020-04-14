@@ -150,7 +150,7 @@ PPLCompendiumBrowser >> openAbout [
 PPLCompendiumBrowser >> openHelp [
 	"Open the help system"
 	
-	CompendiumHelp open
+	PHCCompendiumHelp open
 ]
 
 { #category : #actions }
