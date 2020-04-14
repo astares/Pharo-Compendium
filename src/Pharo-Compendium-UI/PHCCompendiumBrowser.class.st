@@ -2,32 +2,35 @@
 Main UI window for the library browser
 "
 Class {
-	#name : #PPLCompendiumBrowser,
+	#name : #PHCCompendiumBrowser,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'menu',
 		'statusBar',
-		'toolBar'
+		'toolBar',
+		'contentPresenter'
 	],
 	#category : #'Pharo-Compendium-UI-Windows'
 }
 
 { #category : #specs }
-PPLCompendiumBrowser class >> defaultSpec [
+PHCCompendiumBrowser class >> defaultSpec [
 	"Return a default spec for the UI layout"
 	
 	^ SpBoxLayout newVertical  
+		add: #contentPresenter;
+		yourself
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser class >> icon [
+PHCCompendiumBrowser class >> icon [
 	"Return an icon suitable for representing the receiver class and instances"
 	
 	^self iconNamed: #catalogIcon
 ]
 
 { #category : #'world menu' }
-PPLCompendiumBrowser class >> menuCommandOn: aBuilder [
+PHCCompendiumBrowser class >> menuCommandOn: aBuilder [
 	"Register within the world menu"
 	<worldMenu> 
 	
@@ -41,28 +44,28 @@ PPLCompendiumBrowser class >> menuCommandOn: aBuilder [
 ]
 
 { #category : #showing }
-PPLCompendiumBrowser class >> open [
+PHCCompendiumBrowser class >> open [
 	<script>
 
 	self new openWithSpec
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser class >> systemIcon [
+PHCCompendiumBrowser class >> systemIcon [
 	"Return an icon used to display the receiver class within a system browser"
 	
 	^self icon
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser class >> taskbarIcon [
+PHCCompendiumBrowser class >> taskbarIcon [
 	"Return an icon used to display the receivers instances in the Pharo taskbar"
 
 	^self icon
 ]
 
 { #category : #defaults }
-PPLCompendiumBrowser >> aboutText [
+PHCCompendiumBrowser >> aboutText [
 
 	^'PHARO COMPENDIUM
 
@@ -70,7 +73,7 @@ PPLCompendiumBrowser >> aboutText [
 ]
 
 { #category : #'private - building - menues' }
-PPLCompendiumBrowser >> buildCompendiumMenu [
+PHCCompendiumBrowser >> buildCompendiumMenu [
 
 	^self newMenu
 		addItem: [ :item | item name: 'Settings'; action: [ self openSettings ] ];	 
@@ -78,7 +81,7 @@ PPLCompendiumBrowser >> buildCompendiumMenu [
 ]
 
 { #category : #'private - building - menues' }
-PPLCompendiumBrowser >> buildHelpMenu [
+PHCCompendiumBrowser >> buildHelpMenu [
 
 	^ self newMenu
 		addItem: [ :item | item name: 'Help'; action: [ 	self openHelp ] ];
@@ -87,7 +90,7 @@ PPLCompendiumBrowser >> buildHelpMenu [
 ]
 
 { #category : #'private - building' }
-PPLCompendiumBrowser >> buildMenuBar [
+PHCCompendiumBrowser >> buildMenuBar [
 	^ self newMenuBar
 		addGroup: [ :group | 
 			group addItem: [ :item | 
@@ -101,7 +104,7 @@ PPLCompendiumBrowser >> buildMenuBar [
 ]
 
 { #category : #'private - building - toolbar' }
-PPLCompendiumBrowser >> buildSettingsToolBarItem [
+PHCCompendiumBrowser >> buildSettingsToolBarItem [
 		
 	^ SpToolBarButton new
 		label: 'Settings';
@@ -112,13 +115,13 @@ PPLCompendiumBrowser >> buildSettingsToolBarItem [
 ]
 
 { #category : #'private - building' }
-PPLCompendiumBrowser >> buildStatusBar [
+PHCCompendiumBrowser >> buildStatusBar [
 
 	^ SpStatusBarPresenter new
 ]
 
 { #category : #'private - building' }
-PPLCompendiumBrowser >> buildToolBar [
+PHCCompendiumBrowser >> buildToolBar [
 	
 	^ self newToolBar 
 		addItem: self buildSettingsToolBarItem;		 			
@@ -126,14 +129,20 @@ PPLCompendiumBrowser >> buildToolBar [
 ]
 
 { #category : #defaults }
-PPLCompendiumBrowser >> initialExtent [
+PHCCompendiumBrowser >> initialExtent [
 	"Return an initial extent when the receiver opens standalone"
 	
 	^ 700 @ 500
 ]
 
+{ #category : #initialization }
+PHCCompendiumBrowser >> initializeWidgets [ 
+
+	contentPresenter := self instantiate: PHCArtifactListPresenter
+]
+
 { #category : #defaults }
-PPLCompendiumBrowser >> initializeWindow: aWindowPresenter [
+PHCCompendiumBrowser >> initializeWindow: aWindowPresenter [
 	"I'm called whenever the component will be displayed in a window (or dialog). 
 	 This is usually attained sending #openWithSpec or #openDialogWithSpec."
 	
@@ -147,17 +156,17 @@ PPLCompendiumBrowser >> initializeWindow: aWindowPresenter [
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> menu [
+PHCCompendiumBrowser >> menu [
 	^ menu
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> menu: anObject [
+PHCCompendiumBrowser >> menu: anObject [
 	^ menu := anObject
 ]
 
 { #category : #actions }
-PPLCompendiumBrowser >> openAbout [
+PHCCompendiumBrowser >> openAbout [
 	"Give some infos on the receiver"
 	
 	| dialog |
@@ -166,41 +175,41 @@ PPLCompendiumBrowser >> openAbout [
 ]
 
 { #category : #actions }
-PPLCompendiumBrowser >> openHelp [
+PHCCompendiumBrowser >> openHelp [
 	"Open the help system"
 	
 	PHCCompendiumHelp open
 ]
 
 { #category : #actions }
-PPLCompendiumBrowser >> openSettings [ 
+PHCCompendiumBrowser >> openSettings [ 
 
 	PHCCompendiumSettings openSettings 
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> statusBar [
+PHCCompendiumBrowser >> statusBar [
 	^ statusBar
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> statusBar: anObject [
+PHCCompendiumBrowser >> statusBar: anObject [
 	^ statusBar := anObject
 ]
 
 { #category : #defaults }
-PPLCompendiumBrowser >> title [
+PHCCompendiumBrowser >> title [
 	"Return a title for the receivers standalone window"
 
    ^'Pharo Compendium'
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> toolBar [
+PHCCompendiumBrowser >> toolBar [
 	^ toolBar
 ]
 
 { #category : #accessing }
-PPLCompendiumBrowser >> toolBar: anObject [
+PHCCompendiumBrowser >> toolBar: anObject [
 	toolBar := anObject
 ]
