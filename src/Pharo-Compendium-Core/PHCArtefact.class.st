@@ -27,10 +27,14 @@ PHCArtefact class >> named: aName [
 
 { #category : #accessing }
 PHCArtefact >> name [
+	"Return the name of the receiver"
+	
 	^ name
 ]
 
 { #category : #accessing }
-PHCArtefact >> name: anObject [
-	name := anObject
+PHCArtefact >> name: aString [
+	"Sets the name of the receiver to the given string"
+	
+	name := aString
 ]
