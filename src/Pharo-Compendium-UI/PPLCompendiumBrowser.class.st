@@ -22,5 +22,5 @@ PPLCompendiumBrowser class >> open [
 { #category : #defaults }
 PPLCompendiumBrowser >> title [ 
 
-   ^'Pharo compendium'
+   ^'Pharo Compendium'
 ]

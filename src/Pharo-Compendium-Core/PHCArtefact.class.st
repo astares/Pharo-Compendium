@@ -2,7 +2,7 @@
 A Pharo project library object
 "
 Class {
-	#name : #PHCInfoArtefact,
+	#name : #PHCArtefact,
 	#superclass : #Object,
 	#instVars : [
 		'name'
@@ -10,8 +10,15 @@ Class {
 	#category : #'Pharo-Compendium-Core-Model'
 }
 
+{ #category : #testing }
+PHCArtefact class >> isAbstract [
+	"Return true if the receiver is abstract - false otherwise"
+	
+	^self == PHCArtefact 
+]
+
 { #category : #'instance creation' }
-PHCInfoArtefact class >> named: aName [
+PHCArtefact class >> named: aName [
 
 	^(self new)	
 		name: aName;
@@ -19,11 +26,11 @@ PHCInfoArtefact class >> named: aName [
 ]
 
 { #category : #accessing }
-PHCInfoArtefact >> name [
+PHCArtefact >> name [
 	^ name
 ]
 
 { #category : #accessing }
-PHCInfoArtefact >> name: anObject [
+PHCArtefact >> name: anObject [
 	name := anObject
 ]

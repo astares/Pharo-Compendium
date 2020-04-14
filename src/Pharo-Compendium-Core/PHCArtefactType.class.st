@@ -2,7 +2,7 @@
 A kind of info
 "
 Class {
-	#name : #PHCInfoType,
+	#name : #PHCArtefactType,
 	#superclass : #Object,
 	#category : #'Pharo-Compendium-Core-Model'
 }
