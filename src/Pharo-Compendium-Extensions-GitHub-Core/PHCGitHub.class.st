@@ -16,6 +16,12 @@ PHCGitHub class >> baseURL [
 	^'http://www.github.com'
 ]
 
+{ #category : #'class initialization' }
+PHCGitHub class >> initialize [
+
+	self registerInstance
+]
+
 { #category : #accessing }
 PHCGitHub >> defaultName [
 

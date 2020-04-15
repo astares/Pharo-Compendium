@@ -33,7 +33,9 @@ Compendium is a new tool to list, browse and load Pharo artefacts like:
 		
 Compendium Repository: 
 
-	', (self url: 'https://github.com/astares/Pharo-Compendium') 
+	', (self url: 'https://github.com/astares/Pharo-Compendium'), '
+	', (self url: 'https://github.com/topics/pharo'), '
+	', (self url: 'https://api.github.com/search/repositories?q=language:smalltalk+topic:pharo')
 ]
 
 { #category : #showing }

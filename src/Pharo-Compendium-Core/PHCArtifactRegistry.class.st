@@ -27,7 +27,11 @@ PHCArtifactRegistry class >> allRegistries [
 
 { #category : #'class initialization' }
 PHCArtifactRegistry class >> initialize [
-	self registerInstance
+	"Subclasses should override and call 
+		self registerInstance
+	"
+	
+	self subclassResponsibility 
 ]
 
 { #category : #testing }
