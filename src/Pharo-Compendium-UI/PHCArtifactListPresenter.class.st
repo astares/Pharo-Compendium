@@ -30,7 +30,7 @@ PHCArtifactListPresenter >> initializeWidgets [
 	self tree	
 		beSingleSelection; 
 		addColumn: (SpCompositeTableColumn new
-				title: 'Artefact Name';
+				title: 'Name';
 				addColumn:
 					(SpImageTableColumn new
 						width: 20;

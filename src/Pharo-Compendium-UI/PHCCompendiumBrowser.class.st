@@ -76,7 +76,7 @@ PHCCompendiumBrowser >> aboutText [
 PHCCompendiumBrowser >> buildCompendiumMenu [
 
 	^self newMenu
-		addItem: [ :item | item name: 'Settings'; action: [ self openSettings ] ];	 
+		addItem: [ :item | item name: 'Settings...'; action: [ self openSettings ] ];	 
 		yourself
 ]
 
@@ -109,7 +109,7 @@ PHCCompendiumBrowser >> buildSettingsToolBarItem [
 	^ SpToolBarButton new
 		label: 'Settings';
 		icon: (SettingBrowser iconNamed: #smallConfigurationIcon);
-		help: 'Open terminal';
+		help: 'Open settings';
 		action: [ self openSettings ];
 		yourself
 ]
