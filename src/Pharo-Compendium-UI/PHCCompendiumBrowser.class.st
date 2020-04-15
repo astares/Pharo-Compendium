@@ -95,7 +95,7 @@ PHCCompendiumBrowser >> buildMenuBar [
 		addGroup: [ :group | 
 			group addItem: [ :item | 
 					item
-						name: 'Compendium';
+						name: 'General';
 						subMenu: self buildCompendiumMenu ].
 			group addItem: [ :item | 
 					item

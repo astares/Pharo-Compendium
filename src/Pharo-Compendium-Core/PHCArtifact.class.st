@@ -4,8 +4,8 @@ A Pharo project library object
 Class {
 	#name : #PHCArtifact,
 	#superclass : #Object,
-	#traits : 'PHCTNamed + PHCTDescribed',
-	#classTraits : 'PHCTNamed classTrait + PHCTDescribed classTrait',
+	#traits : 'PHCTUniquelyIdentified + PHCTNamed + PHCTDescribed',
+	#classTraits : 'PHCTUniquelyIdentified classTrait + PHCTNamed classTrait + PHCTDescribed classTrait',
 	#instVars : [
 		'id'
 	],
@@ -25,28 +25,6 @@ PHCArtifact class >> named: aName [
 	^(self new)	
 		name: aName;
 		yourself
-]
-
-{ #category : #accessing }
-PHCArtifact >> id [
-	^ id
-]
-
-{ #category : #accessing }
-PHCArtifact >> id: anObject [
-	id := anObject
-]
-
-{ #category : #'private - initialization' }
-PHCArtifact >> initialUniqueID [
-
-	id := UUID new asString copyReplaceAll: '-' with: ''
-]
-
-{ #category : #initialization }
-PHCArtifact >> initialize [
-	super initialize.
-	self initialUniqueID
 ]
 
 { #category : #testing }

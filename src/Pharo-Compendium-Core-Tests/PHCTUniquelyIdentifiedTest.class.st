@@ -23,7 +23,13 @@ PHCTUniquelyIdentifiedTest >> setUp [
 { #category : #tests }
 PHCTUniquelyIdentifiedTest >> testGenerateUniqueIDs [
 
-	self deny: (uniqueID includes: $-)
+	self deny: (uniqueID includes: $-).
 
-	
+	self assert: (uniqueID allSatisfy: [:each | each isAlphaNumeric ])	
+]
+
+{ #category : #tests }
+PHCTUniquelyIdentifiedTest >> testGenerateUniqueIDsSize [
+
+	self assert: uniqueID size equals: 32
 ]
