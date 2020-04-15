@@ -2,7 +2,7 @@
 A browseable item
 "
 Trait {
-	#name : #TBrowseable,
+	#name : #PHCTBrowseable,
 	#instVars : [
 		'url'
 	],
@@ -10,11 +10,11 @@ Trait {
 }
 
 { #category : #accessing }
-TBrowseable >> url [
+PHCTBrowseable >> url [
 	^ url
 ]
 
 { #category : #accessing }
-TBrowseable >> url: anObject [
+PHCTBrowseable >> url: anObject [
 	url := anObject
 ]

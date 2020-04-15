@@ -124,7 +124,7 @@ PHCCompendiumBrowser >> buildStatusBar [
 PHCCompendiumBrowser >> buildToolBar [
 	
 	^ self newToolBar 
-		addItem: self buildSettingsToolBarItem;		 			
+		addItemRight: self buildSettingsToolBarItem;		 			
 		yourself
 ]
 

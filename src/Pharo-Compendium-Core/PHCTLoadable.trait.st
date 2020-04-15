@@ -2,7 +2,7 @@
 A loadable item
 "
 Trait {
-	#name : #TLoadable,
+	#name : #PHCTLoadable,
 	#instVars : [
 		'loadable'
 	],
@@ -10,12 +10,12 @@ Trait {
 }
 
 { #category : #testing }
-TLoadable >> isLoadable [
+PHCTLoadable >> isLoadable [
 
 	^loadable
 ]
 
 { #category : #accessing }
-TLoadable >> loadable: anObject [
+PHCTLoadable >> loadable: anObject [
 	loadable := anObject
 ]

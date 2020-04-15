@@ -4,10 +4,10 @@ A Pharo project library object
 Class {
 	#name : #PHCArtifact,
 	#superclass : #Object,
+	#traits : 'PHCTNamed + PHCTDescribed',
+	#classTraits : 'PHCTNamed classTrait + PHCTDescribed classTrait',
 	#instVars : [
-		'id',
-		'name',
-		'description'
+		'id'
 	],
 	#category : #'Pharo-Compendium-Core-Model'
 }
@@ -27,22 +27,6 @@ PHCArtifact class >> named: aName [
 		yourself
 ]
 
-{ #category : #defaults }
-PHCArtifact >> defaultName [
-
-	^'Unnamed ', (self class name allButFirst: 3)
-]
-
-{ #category : #accessing }
-PHCArtifact >> description [
-	^ description ifNil: [ description := '' ]
-]
-
-{ #category : #accessing }
-PHCArtifact >> description: anObject [
-	description := anObject
-]
-
 { #category : #accessing }
 PHCArtifact >> id [
 	^ id
@@ -54,7 +38,7 @@ PHCArtifact >> id: anObject [
 ]
 
 { #category : #'private - initialization' }
-PHCArtifact >> initUniqueID [
+PHCArtifact >> initialUniqueID [
 
 	id := UUID new asString copyReplaceAll: '-' with: ''
 ]
@@ -62,7 +46,7 @@ PHCArtifact >> initUniqueID [
 { #category : #initialization }
 PHCArtifact >> initialize [
 	super initialize.
-	self initUniqueID
+	self initialUniqueID
 ]
 
 { #category : #testing }
@@ -77,18 +61,4 @@ PHCArtifact >> isLoadable [
 	"Its not loadable by default"
 	
 	^false
-]
-
-{ #category : #accessing }
-PHCArtifact >> name [
-	"Return the name of the receiver"
-	
-	^ name ifNil: [ name := self defaultName ]
-]
-
-{ #category : #accessing }
-PHCArtifact >> name: aString [
-	"Sets the name of the receiver to the given string"
-	
-	name := aString
 ]
