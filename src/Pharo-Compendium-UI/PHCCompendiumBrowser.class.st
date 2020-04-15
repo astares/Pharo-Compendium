@@ -84,8 +84,8 @@ PHCCompendiumBrowser >> buildCompendiumMenu [
 PHCCompendiumBrowser >> buildHelpMenu [
 
 	^ self newMenu
-		addItem: [ :item | item name: 'Help'; action: [ 	self openHelp ] ];
-		addItem: [ :item | item name: 'About'; action: [ 	self openAbout ] ];	 
+		addGroup: [:group | group addItem: [:item | item name: 'Help'; action: [ self openHelp ]]];
+		addGroup: [:group | group addItem: [:item | item name: 'About'; action: [ self openAbout ]]];
 		yourself
 ]
 
