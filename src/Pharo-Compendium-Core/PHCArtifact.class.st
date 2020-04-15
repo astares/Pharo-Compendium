@@ -65,6 +65,20 @@ PHCArtifact >> initialize [
 	self initUniqueID
 ]
 
+{ #category : #testing }
+PHCArtifact >> isBrowseable [
+	"Its not browseable by default"
+	
+	^false
+]
+
+{ #category : #testing }
+PHCArtifact >> isLoadable [
+	"Its not loadable by default"
+	
+	^false
+]
+
 { #category : #accessing }
 PHCArtifact >> name [
 	"Return the name of the receiver"
