@@ -7,10 +7,15 @@ Class {
 	#category : #'Pharo-Compendium-Core-Tests-Model'
 }
 
+{ #category : #defaults }
+PHCArtifactTest >> defaultTestClass [
+	^PHCArtifact 
+]
+
 { #category : #running }
 PHCArtifactTest >> setUp [ 
 	super setUp.
-	artifact := PHCArtifact new
+	artifact := self defaultTestClass new
 ]
 
 { #category : #tests }
@@ -28,7 +33,7 @@ PHCArtifactTest >> testInitializedWithUUID [
 { #category : #tests }
 PHCArtifactTest >> testInstanceCreation [
 
-	self assert: (PHCArtifact named: 'New Artifact') name equals: 'New Artifact'
+	self assert: (self defaultTestClass named: 'New Artifact') name equals: 'New Artifact'
 ]
 
 { #category : #tests }
