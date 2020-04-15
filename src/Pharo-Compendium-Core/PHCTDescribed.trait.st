@@ -11,7 +11,7 @@ Trait {
 
 { #category : #accessing }
 PHCTDescribed >> description [
-	^ description
+	^ description ifNil: [ description := '' ]
 ]
 
 { #category : #accessing }

@@ -9,7 +9,7 @@ Trait {
 	#category : #'Pharo-Compendium-Core-Traits'
 }
 
-{ #category : #defaults }
+{ #category : #'private - defaults' }
 PHCTNamed >> defaultName [
 
 	^'Unnamed ', (self class name allButFirst: 3)

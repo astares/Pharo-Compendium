@@ -32,12 +32,6 @@ PHCArtifactTest >> testInstanceCreation [
 ]
 
 { #category : #tests }
-PHCArtifactTest >> testIsAbstractClass [
-
-	self assert: PHCArtifact isAbstract 
-]
-
-{ #category : #tests }
 PHCArtifactTest >> testLazyEmptyDescription [
 
 	self assert: artifact description isEmpty

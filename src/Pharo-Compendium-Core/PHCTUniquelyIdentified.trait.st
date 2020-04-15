@@ -15,7 +15,7 @@ PHCTUniquelyIdentified classSide >> generateUniqueID [
 	^UUID new asString copyReplaceAll: '-' with: ''
 ]
 
-{ #category : #defaults }
+{ #category : #'private - utilities' }
 PHCTUniquelyIdentified >> generateUniqueID [
 
 	^self class generateUniqueID
@@ -23,12 +23,14 @@ PHCTUniquelyIdentified >> generateUniqueID [
 
 { #category : #accessing }
 PHCTUniquelyIdentified >> id [
-	"Returns the receivers unique ID"
+	"Returns the receivers unique identifier"
 	
 	^ id ifNil: [ id := self generateUniqueID ]
 ]
 
 { #category : #accessing }
 PHCTUniquelyIdentified >> id: anObject [
+	"Sets the receivers unique identifier"
+	
 	id := anObject
 ]
