@@ -28,3 +28,9 @@ PHCTNamed >> name: aString [
 	
 	name := aString
 ]
+
+{ #category : #printing }
+PHCTNamed >> printOn: aStream [
+
+	aStream nextPutAll: self name asString
+]
