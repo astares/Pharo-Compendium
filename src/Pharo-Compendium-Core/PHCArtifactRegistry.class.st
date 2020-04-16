@@ -31,7 +31,7 @@ PHCArtifactRegistry class >> initialize [
 		self registerInstance
 	"
 	
-	self subclassResponsibility 
+	self registerInstance 
 ]
 
 { #category : #testing }

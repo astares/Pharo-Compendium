@@ -6,5 +6,29 @@ Class {
 	#superclass : #PHCArtifact,
 	#traits : 'PHCTLoadable + PHCTBrowseable',
 	#classTraits : 'PHCTLoadable classTrait + PHCTBrowseable classTrait',
+	#instVars : [
+		'cloneURL',
+		'sshURL'
+	],
 	#category : #'Pharo-Compendium-Extensions-GitHub-Core-Model'
 }
+
+{ #category : #accessing }
+PHCGitHubProject >> cloneURL [
+	^ cloneURL
+]
+
+{ #category : #accessing }
+PHCGitHubProject >> cloneURL: anObject [
+	cloneURL := anObject
+]
+
+{ #category : #accessing }
+PHCGitHubProject >> sshURL [
+	^ sshURL
+]
+
+{ #category : #accessing }
+PHCGitHubProject >> sshURL: anObject [
+	sshURL := anObject
+]
