@@ -38,6 +38,7 @@ PHCGitHubCrawler >> createNewClient [
 
 	^ZnClient new
 		accept: 'application/vnd.github.mercy-preview+json';
+		 
 		yourself
 ]
 
@@ -52,11 +53,11 @@ PHCGitHubCrawler >> initialize [
 ]
 
 { #category : #utilities }
-PHCGitHubCrawler >> numberOfPagesFor: anItem using: aQuery [ 
+PHCGitHubCrawler >> numberOfItemsFor: anItemType using: aQuery [ 
 	"anItem needs to be users or repositories"
 	
 	| resp |
-	resp := ZnEasy get: baseURL, '/search/',anItem,'?q=',aQuery,'&per_page=1&page=1'.
+	resp := ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1'.
 	^(STON fromString: resp contents) at: 'total_count'
 	 
 ]
@@ -78,11 +79,25 @@ PHCGitHubCrawler >> queryPage: pageNumber for: anItem using: aQuery withItemsDo:
 
 { #category : #utilities }
 PHCGitHubCrawler >> retrieveItemsFor: anItemType query: aQuery using: aBlock [
-	| total coll |
+	| total coll current progressBlock |
 	coll := OrderedCollection new.	
-	total := self numberOfPagesFor: anItemType using: aQuery.
-	1 to: (total // pageSize + 1) do: [:pageNumber |
-		coll addAll: (self queryPage: pageNumber for: anItemType using: aQuery withItemsDo: aBlock)
+	current := 0.
+	total := self numberOfItemsFor: anItemType using: aQuery.
+	progressBlock := [:el |
+							current := current + 1.
+							HTTPProgress signal: 'Retrieving...' amount: current total: total.
+							aBlock value: el ].
+	UIManager default informUserDuring: [ :bar |
+		bar label: 'Retrieving from GitHub...'.
+		[
+			1 to: (total // pageSize + 1) do: [:pageNumber |
+				coll addAll: (self queryPage: pageNumber for: anItemType using: aQuery withItemsDo: progressBlock)
+		]]
+			on: HTTPProgress 
+			do: [ :progress | 
+				bar label: progress printString.
+				progress isEmpty ifFalse: [ bar current: progress percentage ]. 
+				progress resume ]
 	].
 	^coll
 ]
