@@ -56,9 +56,10 @@ PHCGitHubCrawler >> initialize [
 PHCGitHubCrawler >> numberOfItemsFor: anItemType using: aQuery [ 
 	"anItem needs to be users or repositories"
 	
-	| resp |
-	resp := ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1'.
-	^(STON fromString: resp contents) at: 'total_count'
+	| response |
+	response := ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1'.
+	response isSuccess ifFalse: [ 0 ].
+	^(STON fromString: response contents) at: 'total_count'
 	 
 ]
 
