@@ -25,17 +25,31 @@ PHCArtifactListPresenter class >> open [
 ]
 
 { #category : #initialization }
+PHCArtifactListPresenter >> fillTree [
+	tree roots: PHCArtifactRegistry allRegistries.
+	tree children: [:each | each children ].
+	tree halt
+]
+
+{ #category : #initialization }
 PHCArtifactListPresenter >> initializeWidgets [
 	 
 	self tree	
 		beSingleSelection; 
 		addColumn: (SpCompositeTableColumn new
-				title: 'Name';
+				title: 'Classes';
 				addColumn:
 					(SpImageTableColumn new
 						width: 20;
-						evaluated: #icon;
-						yourself))
+						evaluated: #systemIcon;
+						yourself);
+				addColumn:
+					(SpStringTableColumn new
+						evaluated: #name;
+						yourself);
+				yourself).
+	
+	self fillTree					
 ]
 
 { #category : #accessing }

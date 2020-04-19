@@ -119,7 +119,7 @@ PHCGitHubCrawler >> retrieveRepositories [
 				cloneURL: (each at: 'clone_url');
 				yourself
 	].
-	^repos
+	^repos sorted: [:a :b | a name < b name ]
 ]
 
 { #category : #accessing }

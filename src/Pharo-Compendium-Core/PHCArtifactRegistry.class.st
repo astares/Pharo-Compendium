@@ -4,6 +4,9 @@ Common superclass for artifact stores
 Class {
 	#name : #PHCArtifactRegistry,
 	#superclass : #PHCCompendiumItem,
+	#instVars : [
+		'artifacts'
+	],
 	#classVars : [
 		'AllRestries'
 	],
@@ -54,4 +57,10 @@ PHCArtifactRegistry class >> reset [
 	<script>
 	
 	AllRestries := nil
+]
+
+{ #category : #accessing }
+PHCArtifactRegistry >> artifacts [
+
+	^self subclassResponsibility 
 ]

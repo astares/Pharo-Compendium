@@ -22,6 +22,12 @@ PHCGitHub class >> initialize [
 	self registerInstance
 ]
 
+{ #category : #artefacts }
+PHCGitHub >> artifacts [
+
+	^artifacts ifNil: [ artifacts := PHCGitHubCrawler new retrieveRepositories ]
+]
+
 { #category : #accessing }
 PHCGitHub >> defaultName [
 
