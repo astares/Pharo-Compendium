@@ -66,8 +66,7 @@ PHCArtifactListPresenter >> initializeWidgets [
 					(SpStringTableColumn new
 						evaluated: #name;
 						yourself);
-				yourself);
-		lazilyComputeChildren;		
+				yourself);			
 		contextMenu: self contextMenu.		
 	
 	self fillTree					
