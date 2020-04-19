@@ -42,6 +42,15 @@ PHCGitHubCrawler >> createNewClient [
 		yourself
 ]
 
+{ #category : #crawling }
+PHCGitHubCrawler >> gitHubUserFrom: each [
+
+	^PHCGitHubUser new
+		id: (each at: 'id');
+		name: (each at: 'login');
+		url: (each at: 'html_url')
+]
+
 { #category : #initialization }
 PHCGitHubCrawler >> initialize [
 	super initialize.
@@ -115,6 +124,7 @@ PHCGitHubCrawler >> retrieveRepositories [
 				name: (each at: 'name');
 				description: (each at: 'description');
 				url: (each at: 'html_url');
+				owner: (self gitHubUserFrom: (each at: 'owner'));
 				sshURL: (each at: 'ssh_url');
 				cloneURL: (each at: 'clone_url');
 				yourself

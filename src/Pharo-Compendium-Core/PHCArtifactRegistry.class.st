@@ -56,7 +56,8 @@ PHCArtifactRegistry class >> registerInstance [
 PHCArtifactRegistry class >> reset [
 	<script>
 	
-	AllRestries := nil
+	AllRestries := nil.
+	self allSubclassesDo: [:each | each registerInstance ]
 ]
 
 { #category : #accessing }

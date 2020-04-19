@@ -8,7 +8,8 @@ Class {
 	#classTraits : 'PHCTLoadable classTrait + PHCTBrowseable classTrait',
 	#instVars : [
 		'cloneURL',
-		'sshURL'
+		'sshURL',
+		'owner'
 	],
 	#category : #'Pharo-Compendium-Extensions-GitHub-Core-Model'
 }
@@ -21,6 +22,16 @@ PHCGitHubProject >> cloneURL [
 { #category : #accessing }
 PHCGitHubProject >> cloneURL: anObject [
 	cloneURL := anObject
+]
+
+{ #category : #accessing }
+PHCGitHubProject >> owner [
+	^ owner
+]
+
+{ #category : #accessing }
+PHCGitHubProject >> owner: anObject [
+	owner := anObject
 ]
 
 { #category : #accessing }
