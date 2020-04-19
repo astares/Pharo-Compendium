@@ -24,11 +24,30 @@ PHCArtifactListPresenter class >> open [
 	self new openWithSpec 
 ]
 
+{ #category : #actions }
+PHCArtifactListPresenter >> browseArtifact [
+
+	self tree selectedItem ifNotNil: [:item | WebBrowser openOn: item url ]
+		
+]
+
+{ #category : #initialization }
+PHCArtifactListPresenter >> contextMenu [ 
+	^(SpMenuPresenter new
+		addGroup: [ :group | group
+			addItem: [ :item | item name: 'Browse';  action: [ self browseArtifact ]]
+		];			
+		addGroup: [ :group | group
+			addItem: [ :item | item name: 'Inspect';  action: [ self inspectArtifact ]]
+		];						
+		yourself).
+]
+
 { #category : #initialization }
 PHCArtifactListPresenter >> fillTree [
 	tree roots: PHCArtifactRegistry allRegistries.
 	tree children: [:each | each children ].
-	tree halt
+	 
 ]
 
 { #category : #initialization }
@@ -47,9 +66,18 @@ PHCArtifactListPresenter >> initializeWidgets [
 					(SpStringTableColumn new
 						evaluated: #name;
 						yourself);
-				yourself).
+				yourself);
+		lazilyComputeChildren;		
+		contextMenu: self contextMenu.		
 	
 	self fillTree					
+]
+
+{ #category : #actions }
+PHCArtifactListPresenter >> inspectArtifact [
+
+	self tree selectedItem ifNotNil: [:item | item inspect ]
+		
 ]
 
 { #category : #accessing }
