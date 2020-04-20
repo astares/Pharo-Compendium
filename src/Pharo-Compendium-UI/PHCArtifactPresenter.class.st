@@ -70,7 +70,7 @@ PHCArtifactPresenter >> initializeTree [
 	self tree	
 		beSingleSelection; 
 		addColumn: (SpCompositeTableColumn new
-				title: 'Classes';
+				title: 'Artifacts';
 				addColumn:
 					(SpImageTableColumn new
 						width: 20;
