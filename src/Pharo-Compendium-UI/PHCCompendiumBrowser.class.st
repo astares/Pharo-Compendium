@@ -39,7 +39,7 @@ PHCCompendiumBrowser class >> menuCommandOn: aBuilder [
 		help: 'Pharo Compendium';
 		action: [ self open ]; 
 		order: 200;
-		iconName: #catalogIcon. 
+		icon: self systemIcon
 	
 ]
 
