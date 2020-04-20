@@ -14,22 +14,28 @@ BaselineOfCompendium >> baseline: spec [
 	<baseline>
 
 	spec for: #'common' do: [
-		"Packages"
+		"Standard Packages"
 		spec 
 			package: 'Pharo-Compendium-Core';
 			package: 'Pharo-Compendium-Core-Tests' with: [ spec requires: #('Pharo-Compendium-Core' ) ].
 		
 		spec package: 'Pharo-Compendium-Help'.
-					
 		spec package: 'Pharo-Compendium-UI' with: [ spec requires: #('Pharo-Compendium-Core' 'Pharo-Compendium-Help') ].	
+		
+		"Extension packages"
+		spec
+			package: 'Pharo-Compendium-Extensions-GitHub-Core' with: [ spec requires: 'Pharo-Compendium-Core' ];
+			package: 'Pharo-Compendium-Extensions-GitHub-UI' with: [ spec requires: 'Pharo-Compendium-Extensions-GitHub-Core' ].
 			
 		"Groups"	
 		spec 
 			group: 'Core' with: #('Pharo-Compendium-Core' );
-			group: 'UI' with: #('Pharo-Compendium-UI' );
+			group: 'Extensions-Core' with: #('Pharo-Compendium-Extensions-GitHub-Core');
+			group: 'UI' with: #('Pharo-Compendium-UI');
+			group: 'Extensions-UI' with: #('Pharo-Compendium-Extensions-GitHub-UI');
 			group: 'Help' with: #('Pharo-Compendium-Help');
 			group: 'Tests' with: #('Pharo-Compendium-Core-Tests' );
-			group: 'all' with: #('Core' 'Help' 'UI' 'Tests' );
+			group: 'all' with: #('Core' 'Help' 'UI' 'Extensions-UI' 'Tests' );
 			group: 'default' with: #('all' ) 
 	]
 ]
