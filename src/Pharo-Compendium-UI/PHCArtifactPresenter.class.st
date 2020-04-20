@@ -5,7 +5,8 @@ Class {
 	#name : #PHCArtifactPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'tree'
+		'tree',
+		'details'
 	],
 	#category : #'Pharo-Compendium-UI-Components'
 }
@@ -15,6 +16,7 @@ PHCArtifactPresenter class >> defaultSpec [
 
 	^ SpPanedLayout newVertical		
 		add: #tree;		
+		add: #details;
 		yourself
 ]
 
@@ -31,27 +33,39 @@ PHCArtifactPresenter >> browseArtifact [
 		
 ]
 
-{ #category : #initialization }
-PHCArtifactPresenter >> contextMenu [ 
-	^(SpMenuPresenter new
-		addGroup: [ :group | group
-			addItem: [ :item | item name: 'Browse';  action: [ self browseArtifact ]]
-		];			
-		addGroup: [ :group | group
-			addItem: [ :item | item name: 'Inspect';  action: [ self inspectArtifact ]]
-		];						
-		yourself).
+{ #category : #accessing }
+PHCArtifactPresenter >> details [
+	^ details
 ]
 
-{ #category : #initialization }
+{ #category : #accessing }
+PHCArtifactPresenter >> details: anObject [
+	details := anObject
+]
+
+{ #category : #'private - utilities' }
 PHCArtifactPresenter >> fillTree [
 	tree roots: PHCArtifactRegistry allRegistries.
 	tree children: [:each | each children ].
 	 
 ]
 
+{ #category : #'private - initialization' }
+PHCArtifactPresenter >> initializeDetails [
+	 
+	 details := self instantiate: PHCArtifactDetailsPresenter
+]
+
 { #category : #initialization }
-PHCArtifactPresenter >> initializeWidgets [
+PHCArtifactPresenter >> initializePresenters [
+	self 
+		initializeDetails;
+		initializeTree
+		
+]
+
+{ #category : #'private - initialization' }
+PHCArtifactPresenter >> initializeTree [
 	 
 	self tree	
 		beSingleSelection; 
@@ -67,7 +81,12 @@ PHCArtifactPresenter >> initializeWidgets [
 						evaluated: #name;
 						yourself);
 				yourself);			
-		contextMenu: self contextMenu.		
+		contextMenu: self treeContextMenu.		
+				
+	tree whenSelectionChangedDo: [:sel | 
+		
+	 	self details artifact: sel selectedItem.
+	]. 				
 	
 	self fillTree					
 ]
@@ -83,4 +102,16 @@ PHCArtifactPresenter >> inspectArtifact [
 PHCArtifactPresenter >> tree [
 
 	^tree ifNil: [ tree := self newTreeTable ]
+]
+
+{ #category : #'private - accessing' }
+PHCArtifactPresenter >> treeContextMenu [ 
+	^(SpMenuPresenter new
+		addGroup: [ :group | group
+			addItem: [ :item | item name: 'Browse';  action: [ self browseArtifact ]]
+		];			
+		addGroup: [ :group | group
+			addItem: [ :item | item name: 'Inspect';  action: [ self inspectArtifact ]]
+		];						
+		yourself).
 ]
