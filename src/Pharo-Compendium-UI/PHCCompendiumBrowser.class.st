@@ -87,6 +87,17 @@ PHCCompendiumBrowser >> buildHelpMenu [
 		yourself
 ]
 
+{ #category : #'private - building - toolbar' }
+PHCCompendiumBrowser >> buildHelpToolBarItem [
+		
+	^ SpToolBarButton new
+		label: 'Help';
+		icon: (HelpBrowser iconNamed: #smallHelpIcon);
+		help: 'Open help';
+		action: [ self openHelp ];
+		yourself
+]
+
 { #category : #'private - building' }
 PHCCompendiumBrowser >> buildMenuBar [
 	^ self newMenuBar
@@ -122,7 +133,8 @@ PHCCompendiumBrowser >> buildStatusBar [
 PHCCompendiumBrowser >> buildToolBar [
 	
 	^ self newToolBar 
-		addItemRight: self buildSettingsToolBarItem;		 			
+		addItemRight: self buildHelpToolBarItem;		
+		addItemRight: self buildSettingsToolBarItem;		 			 			
 		yourself
 ]
 
