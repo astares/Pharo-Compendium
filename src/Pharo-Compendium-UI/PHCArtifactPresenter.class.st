@@ -2,7 +2,7 @@
 A list presenting the artifacts
 "
 Class {
-	#name : #PHCArtifactListPresenter,
+	#name : #PHCArtifactPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'tree'
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #specs }
-PHCArtifactListPresenter class >> defaultSpec [
+PHCArtifactPresenter class >> defaultSpec [
 
 	^ SpPanedLayout newVertical		
 		add: #tree;		
@@ -19,20 +19,20 @@ PHCArtifactListPresenter class >> defaultSpec [
 ]
 
 { #category : #showing }
-PHCArtifactListPresenter class >> open [
+PHCArtifactPresenter class >> open [
 	<script>
 	self new openWithSpec 
 ]
 
 { #category : #actions }
-PHCArtifactListPresenter >> browseArtifact [
+PHCArtifactPresenter >> browseArtifact [
 
 	self tree selectedItem ifNotNil: [:item | WebBrowser openOn: item url ]
 		
 ]
 
 { #category : #initialization }
-PHCArtifactListPresenter >> contextMenu [ 
+PHCArtifactPresenter >> contextMenu [ 
 	^(SpMenuPresenter new
 		addGroup: [ :group | group
 			addItem: [ :item | item name: 'Browse';  action: [ self browseArtifact ]]
@@ -44,14 +44,14 @@ PHCArtifactListPresenter >> contextMenu [
 ]
 
 { #category : #initialization }
-PHCArtifactListPresenter >> fillTree [
+PHCArtifactPresenter >> fillTree [
 	tree roots: PHCArtifactRegistry allRegistries.
 	tree children: [:each | each children ].
 	 
 ]
 
 { #category : #initialization }
-PHCArtifactListPresenter >> initializeWidgets [
+PHCArtifactPresenter >> initializeWidgets [
 	 
 	self tree	
 		beSingleSelection; 
@@ -73,14 +73,14 @@ PHCArtifactListPresenter >> initializeWidgets [
 ]
 
 { #category : #actions }
-PHCArtifactListPresenter >> inspectArtifact [
+PHCArtifactPresenter >> inspectArtifact [
 
 	self tree selectedItem ifNotNil: [:item | item inspect ]
 		
 ]
 
 { #category : #accessing }
-PHCArtifactListPresenter >> tree [
+PHCArtifactPresenter >> tree [
 
 	^tree ifNil: [ tree := self newTreeTable ]
 ]

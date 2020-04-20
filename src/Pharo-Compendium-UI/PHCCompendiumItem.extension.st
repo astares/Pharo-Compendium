@@ -11,3 +11,8 @@ PHCCompendiumItem >> icon [
 
 	^nil
 ]
+
+{ #category : #'*Pharo-Compendium-UI' }
+PHCCompendiumItem >> systemIcon [ 
+	^self class systemIcon
+]
