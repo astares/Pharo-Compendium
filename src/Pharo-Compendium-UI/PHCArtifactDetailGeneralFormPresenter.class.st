@@ -66,6 +66,6 @@ PHCArtifactDetailGeneralFormPresenter >> update [
 	artifact ifNotNil: [ 
 		nameInput text: artifact name.
 		descriptionInput text: artifact description.
-		urlLabel text: artifact url.
+		urlInput url: artifact url.
 	]
 ]
