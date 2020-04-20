@@ -1,3 +1,6 @@
+"
+A GitHub user
+"
 Class {
 	#name : #PHCGitHubUser,
 	#superclass : #PHCArtifact,

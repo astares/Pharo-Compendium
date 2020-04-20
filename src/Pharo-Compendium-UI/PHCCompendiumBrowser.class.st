@@ -51,10 +51,8 @@ PHCCompendiumBrowser class >> open [
 ]
 
 { #category : #accessing }
-PHCCompendiumBrowser class >> systemIcon [
-	"Return an icon used to display the receiver class within a system browser"
-	
-	^self icon
+PHCCompendiumBrowser class >> systemIcon [ 
+	^PHCIconCache iconForClass: self name asSymbol
 ]
 
 { #category : #accessing }
@@ -195,6 +193,12 @@ PHCCompendiumBrowser >> statusBar [
 { #category : #accessing }
 PHCCompendiumBrowser >> statusBar: anObject [
 	^ statusBar := anObject
+]
+
+{ #category : #accessing }
+PHCCompendiumBrowser >> taskbarIcon [
+
+	^self class systemIcon 
 ]
 
 { #category : #defaults }
