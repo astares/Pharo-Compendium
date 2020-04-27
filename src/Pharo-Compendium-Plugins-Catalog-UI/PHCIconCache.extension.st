@@ -1,6 +1,28 @@
 Extension { #name : #PHCIconCache }
 
 { #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
+PHCIconCache class >> iconPHCCatalogItemContents [
+
+	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADM0lEQVR4Xo2Tf0zUZRzHvzMB
+taKyYkkNVhGl1JjWBlOsEwacDZblxlZ/0Gq5ctp0ZdOWqTsgENGIIFvWaMWhoQ5BQQWP8+zC
+40Ah1sHggO7g7vhx3N0X6OCOw++rJ9ra+oPNz/b88+zzfn1+S0vZM7H3J1R89lJtpSbp2rqn
+ItdLd2sPPxgRtTf3uXzz6UzfhOV7RjuKaK9KnfkkN74kanVE9JLCsOXLwnK2xu5oOpVqdXaW
+sRBwocyOMD1Yy5yjHvv1j7jyVbLtzfTo3SvC71n5P3HKi1EZ1cUpN2yth5jz/g7MgiIT8rTT
+f34bc73HCNprmO6pwFr/Lj8dfMH0cuJD2Yvioo83VPY1ZCuePi1+dzeeoRaG2oTjr0fpubKX
+was78feW4u88TMD6A/MjNUya87FUv07BO09WS5b6rJASsBN038LTXYa7Ix+nfg/WuhxM5ZuY
+n7wN/j6YuIryZwVY9oNDS2ggn9bSxJDUfiZTvhMYhpk/mHdcYKrzC/xdh8U7gKMua/GP8Uaw
+n0LpOYBfp2K8YTNTllJ0hQmyZK5Ol+/MCsBf/QJiAbeOOctR/G07Gb+URaj/OAyUEDSqmWxM
+ZkyvZqz5NeSuEq4VrJWltp/T5IVFQC9Mi3R9JgFpImQtY8qQQ/CGGlm3icnfMhnXpeNqSMVV
+l4nXXESzJl6WTD+q/gWIEpDbwNMi6r0Io+dR+g7iu6lmwpjGWEuaEL/CyNmN2E+rBDCPpiNx
+stSp3RJUQqNicoMiukFEvwxjZ0WjqlDs3+BuVYvIKlyXNjP8SzJDlRtwNe7Ca8xDr4kLSN99
+mtg8oNvPrFMvIFbwCohTCyOVAlDOhCFDRN7IcE0SztocPK2FOC7uw1z6KuXvRRv+2cDwN1SP
+7agrXG+1Xf+cBe9N0YsOkcUZFFs5o01bxDTS8ZmLcRs0dJ3czrl9sbbtyQ98uCJ82ar/tnF1
+ZFjUrm1PFOhLEn1Oo0Y0VUB8Rqa6jyHfLqa36m2aj8TN7N76yPFHI5c/vuRNPL1mZUJebozW
+dOJ5xX3rS4Yv78F0QkXBW2vOxUdH3P1VJj17X8bX78e0fPtBjDFl7b3ZS/n9DQdHRtPbKV/r
+AAAAAElFTkSuQmCC'
+]
+
+{ #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
 PHCIconCache class >> iconPHCPharoCatalogContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADZklEQVR4XrWTXUzTVxjGDRo3
