@@ -67,6 +67,25 @@ PHCIconCache class >> iconNamed: aSymbol [
 ]
 
 { #category : #'private - icons' }
+PHCIconCache class >> iconPHCBrowseItemURLCommandContents [
+
+	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACi0lEQVR42m1TTUgVURT+7h1H
+R3j+lvZ6Y5Y+LOzHUNDIitBWQdAycSMuIlu0KgpchBRuilYtMmrhpni0KgpcZSvth9AykEzf
+exi+yb98/hWjM3NvZ2bSHHt3c7n3nu+c737nOwwZVsUjs4Q5aJZA1D0zIC4V9CcvanPbY9nW
+Q+UDs5Rx3GnUWWtzuaJWFPjPySWJ/u+ONZiSTyFwPX5Zm/0vQUWPWaPnoe9mY1bkaCnPRAyf
+ZwVuDdqGsYKziQ5tZDNBZY9ZGg5h+F6TGinWGBjdFmQDuaoPNG1gaQ0Q9KcFU+LqG8uYWUVt
+vEOb9RM8NHu7TihtB4o5chRgfzFDblbgd1h3JMbTEr8sYGxBoGvA6U1c0tqZK9jBIpa6Upel
+upWPRxjysoNgi8DpNZ/VQErCEsD9IdsaTUudEf0L56t47FiEQw8BJ8uUANhYlfgyJ3B6D4dG
+rD7NCIwRk/eGwIsJ0cJIvM6Wat69N5+jYTdD7a5/An6cFhialjizjyFa6N9PpAVeT0pMLgvE
+vopOL8G5KO/W8xhOlXE06n5gclHg2ZhAfZihqVzxhHXX6LzAy7hAakXiVYISuF+oC7NYtJDB
+FbH9iEKqSzwecQjIcWhnsKXPxx28I/rxRYmhGdniiViSgxRRV90i1xoU2CSSHmIIbRNz/rfE
+7bc21hwQWFjz69A321i9g7WFqO8FOcxLUlUUrPyDxLz7wfZEXaVWjv6UvUm3jRsWVlUMl4UQ
+UTiDC60nQQ8TfYUivpHqAynhtc8hN02twLCdLUb668YaRUFfvuomyehkAgPL6zBoD1p5Y0WJ
+iaBhUphs5WDq5itZWPh+esIlbriVM05jYJwFjbNEpRfEkJA88zj/AW/1Fh0LXTSkAAAAAElF
+TkSuQmCC'
+]
+
+{ #category : #'private - icons' }
 PHCIconCache class >> iconPHCCompendiumBrowserContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1B

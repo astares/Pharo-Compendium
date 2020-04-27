@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #accessing }
+PHCBrowseItemURLCommand class >> defaultIconName [
+
+	^#PHCBrowseItemURLCommand
+]
+
+{ #category : #accessing }
 PHCBrowseItemURLCommand class >> defaultName [
 
 	^'Browse'
