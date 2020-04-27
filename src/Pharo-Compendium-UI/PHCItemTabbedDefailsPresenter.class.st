@@ -52,11 +52,11 @@ PHCItemTabbedDefailsPresenter >> createPages [
 	self notebook removeAll.
 	artifact ifNil: [ ^self ].
 	artifact class detailPresenters do: [:presenterClassSymbol |
-		general := self instantiate: presenterClassSymbol asClass.
+		general := self instantiate: (presenterClassSymbol asClassInEnvironment: self class environment).
 		general artifact: artifact.
 		page := SpNotebookPage
 					title: general title 
-					icon: (PHCIconCache iconForClass: #PHCCompendiumBrowser)
+					icon: artifact systemIcon
 					provider: general.
 		notebook addPage: page.
 		notebook selectPage: page
