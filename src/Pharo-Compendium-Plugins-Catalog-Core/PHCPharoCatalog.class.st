@@ -17,7 +17,7 @@ PHCPharoCatalog class >> initialize [
 { #category : #accessing }
 PHCPharoCatalog >> artifacts [
 
-	^#()
+	^PHCCatalogCrawler new retrieveCatalogItems 
 ]
 
 { #category : #defaults }
