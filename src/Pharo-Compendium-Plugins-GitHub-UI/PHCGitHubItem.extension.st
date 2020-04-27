@@ -9,5 +9,7 @@ PHCGitHubItem class >> detailPresenters [
 { #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
 PHCGitHubItem class >> systemIcon [
 	
-	^PHCIconCache iconForClass: #PHCGitHub
+	^PHCIconCache iconForClass: (self isAbstract 
+											ifTrue: [ #PHCGitHub ]
+											ifFalse: [ self name asSymbol ])
 ]

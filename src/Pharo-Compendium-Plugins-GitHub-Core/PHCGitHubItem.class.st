@@ -8,3 +8,8 @@ Class {
 	#classTraits : 'PHCTBrowseable classTrait',
 	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Model'
 }
+
+{ #category : #testing }
+PHCGitHubItem class >> isAbstract [ 
+	^self == PHCGitHubItem 
+]
