@@ -1,5 +1,6 @@
 # Pharo-Compendium
-A Pharo compendium
+
+A Pharo compendium to browse artifacts
 
 # Quick Start
 ## Installation
