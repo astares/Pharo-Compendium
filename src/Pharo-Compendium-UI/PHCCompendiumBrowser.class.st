@@ -74,7 +74,8 @@ PHCCompendiumBrowser >> aboutText [
 PHCCompendiumBrowser >> buildCompendiumMenu [
 
 	^self newMenu
-		addItem: [ :item | item name: 'Settings...'; action: [ self openSettings ] ];	 
+		addItem: [ :item | item name: 'Settings...'; action: [ self openSettings ]];	
+		addItem: [ :item | item name: 'Reset Stores...'; action: [ self resetStores ]];	 
 		yourself
 ]
 
@@ -195,6 +196,12 @@ PHCCompendiumBrowser >> openHelp [
 PHCCompendiumBrowser >> openSettings [ 
 
 	PHCCompendiumSettings openSettings 
+]
+
+{ #category : #actions }
+PHCCompendiumBrowser >> resetStores [
+
+	PHCArtifactStore reset
 ]
 
 { #category : #accessing }

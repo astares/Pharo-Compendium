@@ -19,7 +19,7 @@ PHCPharoCatalog class >> initialize [
 { #category : #accessing }
 PHCPharoCatalog >> artifacts [
 
-	^PHCCatalogCrawler new retrieveCatalogItems 
+	^artifacts ifNil: [ artifacts := PHCCatalogCrawler new retrieveCatalogPharoVersions ] 
 ]
 
 { #category : #defaults }

@@ -23,10 +23,11 @@ PHCCatalogCrawler >> catalogItemFrom: aDictionary [
 
 	^(PHCCatalogEntry new)
 		name: (aDictionary at: 'name' ifAbsent: nil);
-		description: (aDictionary at: 'description' ifAbsent: '');		
-		contactInfo: (aDictionary at: 'contactInfo' ifAbsent: '');				
-		packageName: (aDictionary at: 'packageName' ifAbsent: '');				
-		url: (aDictionary at: 'repositoryUrl' ifAbsent: '');				
+		description: ((aDictionary at: 'description') ifNil: '');		
+		contactInfo: ((aDictionary at: 'contactInfo') ifNil: '');	
+		keywords: ((aDictionary at: 'keywords') ifNil: #());					
+		packageName: ((aDictionary at: 'packageName') ifNil: '');				
+		url: ((aDictionary at: 'repositoryUrl') ifNil: '');				
 		yourself
 ]
 
@@ -63,12 +64,15 @@ PHCCatalogCrawler >> initialize [
 ]
 
 { #category : #crawling }
-PHCCatalogCrawler >> retrieveCatalogItems [
+PHCCatalogCrawler >> retrieveCatalogPharoVersions [
 
 	| src items |
 	src := STON fromString: (ZnEasy get: baseURL) contents.
 	items := src collect: [:each | self catalogItemFrom: each ].
+	
+	"Add entry to the appropriate Pharo version"
 	items do: [:each | 
-		(repoMappings at: each url) entries add: each ].
-	^repoMappings
+		repoMappings at: each url ifPresent: [:v | v addEntry: each ]].
+	
+	^repoMappings values sorted: [:a :b | a name > b name ]
 ]
