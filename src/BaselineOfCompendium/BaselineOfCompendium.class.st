@@ -33,6 +33,9 @@ BaselineOfCompendium >> baseline: spec [
 			package: 'Pharo-Compendium-Plugins-Catalog-Core' with: [ spec requires: 'Pharo-Compendium-Core' ];
 			package: 'Pharo-Compendium-Plugins-Catalog-UI' with: [ spec requires: 'Pharo-Compendium-Plugins-Catalog-Core' ].
 			
+		"General extensions to support development"	
+		spec package: 'Pharo-Compendium-UI-Extensions' with: [ spec requires: #('Pharo-Compendium-UI') ].	
+					
 		"Groups"	
 		spec 
 			group: 'Core' with: #('Pharo-Compendium-Core' );
