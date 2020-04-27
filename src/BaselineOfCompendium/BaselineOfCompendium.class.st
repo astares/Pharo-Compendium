@@ -21,8 +21,11 @@ BaselineOfCompendium >> baseline: spec [
 		
 		spec package: 'Pharo-Compendium-Help'.
 		spec package: 'Pharo-Compendium-UI' with: [ spec requires: #('Pharo-Compendium-Core' 'Pharo-Compendium-Help') ].	
+			
+		"General extensions to support development"	
+		spec package: 'Pharo-Compendium-UI-Extensions' with: [ spec requires: #('Pharo-Compendium-UI') ].	
 		
-		"Extension packages"
+		"Extension packages to provide custom artifact provider for GitHub"
 		spec
 			package: 'Pharo-Compendium-Extensions-GitHub-Core' with: [ spec requires: 'Pharo-Compendium-Core' ];
 			package: 'Pharo-Compendium-Extensions-GitHub-UI' with: [ spec requires: 'Pharo-Compendium-Extensions-GitHub-Core' ].
@@ -32,10 +35,11 @@ BaselineOfCompendium >> baseline: spec [
 			group: 'Core' with: #('Pharo-Compendium-Core' );
 			group: 'Extensions-Core' with: #('Pharo-Compendium-Extensions-GitHub-Core');
 			group: 'UI' with: #('Pharo-Compendium-UI');
-			group: 'Extensions-UI' with: #('Pharo-Compendium-Extensions-GitHub-UI');
+			group: 'Extensions-Development' with: #('Pharo-Compendium-UI-Extensions');
+			group: 'Extensions-GitHub' with: #('Pharo-Compendium-Extensions-GitHub-UI');
 			group: 'Help' with: #('Pharo-Compendium-Help');
 			group: 'Tests' with: #('Pharo-Compendium-Core-Tests' );
-			group: 'all' with: #('Core' 'Help' 'UI' 'Extensions-UI' 'Tests' );
+			group: 'all' with: #('Core' 'Help' 'UI' 'Extensions-Development' 'Extensions-GitHub' 'Tests' );
 			group: 'default' with: #('all' ) 
 	]
 ]

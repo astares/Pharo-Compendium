@@ -7,9 +7,23 @@ Class {
 	#category : #'Pharo-Compendium-UI-Commands'
 }
 
-{ #category : #accessing }
-PHCCommand >> artifact [ 
-	^self context
+{ #category : #default }
+PHCCommand class >> defaultIcon [
+	^nil
+]
+
+{ #category : #converting }
+PHCCommand >> asSpecCommand [
+	| command |
+	command := super asSpecCommand.	
+	self defaultIcon
+		ifNotNil: [ :iconName | command icon: iconName ].
+	^ command
+]
+
+{ #category : #defaults }
+PHCCommand >> defaultIcon [ 
+	^self class defaultIcon
 ]
 
 { #category : #executing }

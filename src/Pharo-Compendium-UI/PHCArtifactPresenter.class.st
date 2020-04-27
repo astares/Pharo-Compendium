@@ -18,19 +18,19 @@ PHCArtifactPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: 
 ]
 
 { #category : #commands }
-PHCArtifactPresenter class >> buildContextualMenuGroupWith: presenterIntance [
+PHCArtifactPresenter class >> buildContextualMenuGroupWith: presenterInstance [
 	^ (CmCommandGroup named: 'Context Menu') asSpecGroup
-		register: (self buildHandlingGroupWith: presenterIntance);		
+		register: (self buildHandlingGroupWith: presenterInstance);		
 		yourself
 ]
 
 { #category : #commands }
-PHCArtifactPresenter class >> buildHandlingGroupWith: presenterIntance [
+PHCArtifactPresenter class >> buildHandlingGroupWith: presenterInstance [
 	^ (CmCommandGroup named: 'Handling') asSpecGroup
-		description: 'Commands related to artifact handling.';
-		register: PHCBrowseArtifactCommand forSpec;
-		beDisplayedAsGroup;
-		yourself
+			description: 'Commands related to artifact handling.';
+			register: (PHCBrowseArtifactCommand forSpecContext: presenterInstance);
+			beDisplayedAsGroup;
+			yourself
 ]
 
 { #category : #specs }
@@ -46,13 +46,6 @@ PHCArtifactPresenter class >> defaultSpec [
 PHCArtifactPresenter class >> open [
 	<script>
 	self new openWithSpec 
-]
-
-{ #category : #actions }
-PHCArtifactPresenter >> browseArtifact [
-
-	self tree selectedItem ifNotNil: [:item | WebBrowser openOn: item url ]
-		
 ]
 
 { #category : #accessing }
@@ -103,7 +96,8 @@ PHCArtifactPresenter >> initializeTree [
 						evaluated: #name;
 						yourself);
 				yourself);			
-		contextMenu: self treeContextMenu.		
+		contextMenuFromCommandsGroup: [ self rootCommandsGroup / 'Context Menu' ].					
+		"contextMenu: self treeContextMenu."		
 				
 	tree whenSelectionChangedDo: [:sel | 
 		
@@ -113,27 +107,14 @@ PHCArtifactPresenter >> initializeTree [
 	self fillTree					
 ]
 
-{ #category : #actions }
-PHCArtifactPresenter >> inspectArtifact [
+{ #category : #accessing }
+PHCArtifactPresenter >> selectedArtifact [
 
-	self tree selectedItem ifNotNil: [:item | item inspect ]
-		
+	^self tree selectedItem 
 ]
 
 { #category : #accessing }
 PHCArtifactPresenter >> tree [
 
 	^tree ifNil: [ tree := self newTreeTable ]
-]
-
-{ #category : #'private - accessing' }
-PHCArtifactPresenter >> treeContextMenu [ 
-	^(SpMenuPresenter new
-		addGroup: [ :group | group
-			addItem: [ :item | item name: 'Browse';  action: [ self browseArtifact ]]
-		];			
-		addGroup: [ :group | group
-			addItem: [ :item | item name: 'Inspect';  action: [ self inspectArtifact ]]
-		];						
-		yourself).
 ]
