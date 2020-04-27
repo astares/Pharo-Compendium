@@ -1,71 +1,65 @@
 "
-Artefact presenter
+Common superclass for form based detail presenters
 "
 Class {
-	#name : #PHCArtifactDetailGeneralFormPresenter,
+	#name : #PHCArtifactFormPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'nameLabel',
 		'nameInput',
 		'descriptionInput',
 		'descriptionLabel',
-		'urlLabel',
-		'urlInput',
 		'artifact'
 	],
 	#category : #'Pharo-Compendium-UI-Components'
 }
 
 { #category : #specs }
-PHCArtifactDetailGeneralFormPresenter class >> defaultSpec [
+PHCArtifactFormPresenter class >> defaultSpec [
 	
 	^ SpBoxLayout newVertical
 		add:
 			(SpGridLayout new
 				add: #nameLabel at: 1 @ 1; add: #nameInput at: 2 @ 1;
-				add: #descriptionLabel at: 1 @ 2; add: #descriptionInput at: 2 @ 2;
-				add: #urlLabel at: 1 @ 3; add: #urlInput at: 2 @ 3
+				add: #descriptionLabel at: 1 @ 2; add: #descriptionInput at: 2 @ 2			
 			);
 		yourself
 ]
 
 { #category : #showing }
-PHCArtifactDetailGeneralFormPresenter class >> open [
+PHCArtifactFormPresenter class >> open [
 	<script>
 
 	self new openWithSpec
 ]
 
 { #category : #accessing }
-PHCArtifactDetailGeneralFormPresenter >> artifact [
+PHCArtifactFormPresenter >> artifact [
 	^ artifact
 ]
 
 { #category : #accessing }
-PHCArtifactDetailGeneralFormPresenter >> artifact: anObject [
+PHCArtifactFormPresenter >> artifact: anObject [
 	artifact := anObject.
 	self update
 ]
 
 { #category : #'initialize - release' }
-PHCArtifactDetailGeneralFormPresenter >> initializePresenters [
+PHCArtifactFormPresenter >> initializePresenters [
  
 	nameLabel := self newLabel label: 'Name:'.
 	nameInput := self newTextInput.
 	descriptionLabel := self newLabel label: 'Description:'.
 	descriptionInput := self newTextInput.
-	urlLabel := self newLabel label: 'URL:'.
-	urlInput := self newLink.
 	
 	
 ]
 
-{ #category : #'initialize - release' }
-PHCArtifactDetailGeneralFormPresenter >> update [
+{ #category : #updating }
+PHCArtifactFormPresenter >> update [
 	super update.
 	artifact ifNotNil: [ 
 		nameInput text: artifact name.
-		descriptionInput text: artifact description.
-		urlInput url: artifact url.
+		descriptionInput text: artifact description.	 
 	]
 ]

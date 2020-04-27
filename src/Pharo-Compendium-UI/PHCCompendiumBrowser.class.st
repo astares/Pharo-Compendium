@@ -148,7 +148,7 @@ PHCCompendiumBrowser >> initialExtent [
 { #category : #initialization }
 PHCCompendiumBrowser >> initializeWidgets [ 
 
-	contentPresenter := self instantiate: PHCArtifactPresenter
+	contentPresenter := self instantiate: PHCArtifactsPresenter
 ]
 
 { #category : #defaults }

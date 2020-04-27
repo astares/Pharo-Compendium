@@ -1,7 +1,7 @@
-Extension { #name : #PHCArtifactPresenter }
+Extension { #name : #PHCArtifactsPresenter }
 
 { #category : #'*Pharo-Compendium-UI-Extensions' }
-PHCArtifactPresenter class >> extraCommandsWith: presenter forRootGroup: aCmCommandsGroup [
+PHCArtifactsPresenter class >> extraCommandsWith: presenter forRootGroup: aCmCommandsGroup [
 	"This is an additional extension menu group - only used for development"
 	
 	<extensionCommands>

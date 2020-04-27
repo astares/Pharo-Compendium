@@ -2,7 +2,7 @@
 Present details on the selected artifact
 "
 Class {
-	#name : #PHCArtifactDetailsPresenter,
+	#name : #PHCArtifactTabbedDefailsPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'notebook',
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #specs }
-PHCArtifactDetailsPresenter class >> defaultSpec [
+PHCArtifactTabbedDefailsPresenter class >> defaultSpec [
 
 	^ SpBoxLayout newHorizontal	 
 		add: #notebook;
@@ -20,37 +20,38 @@ PHCArtifactDetailsPresenter class >> defaultSpec [
 ]
 
 { #category : #showing }
-PHCArtifactDetailsPresenter class >> open [ 
+PHCArtifactTabbedDefailsPresenter class >> open [
 	<script>
-	(self new)
+	
+	(self new)		 
 		openWithSpec 
 ]
 
 { #category : #showing }
-PHCArtifactDetailsPresenter class >> openWithArtifact [
+PHCArtifactTabbedDefailsPresenter class >> openWithArtifact [
 	<script>
 	(self new)
-		artifact: (PHCArtifact new name: 'HelloWorld'; description: 'Sampe artifact'; yourself )
+		artifact: (PHCArtifact new name: 'HelloWorld'; description: 'Sampe artifact'; yourself );
 		openWithSpec 
 ]
 
 { #category : #accessing }
-PHCArtifactDetailsPresenter >> artifact [
+PHCArtifactTabbedDefailsPresenter >> artifact [
 	^ artifact
 ]
 
 { #category : #accessing }
-PHCArtifactDetailsPresenter >> artifact: anObject [
+PHCArtifactTabbedDefailsPresenter >> artifact: anObject [
 	artifact := anObject.
-	  self createPages 
+	self createPages 
 ]
 
 { #category : #accessing }
-PHCArtifactDetailsPresenter >> createPages [
+PHCArtifactTabbedDefailsPresenter >> createPages [
 	| page general |
 	self notebook removeAll.
 	artifact ifNil: [ ^self ].
-	general := self instantiate: PHCArtifactDetailGeneralFormPresenter.
+	general := self instantiate: PHCArtifactFormPresenter.
 	general artifact: artifact.
 	page := SpNotebookPage
 					title: 'Details for ', artifact name asString 
@@ -61,12 +62,17 @@ PHCArtifactDetailsPresenter >> createPages [
 	
 ]
 
+{ #category : #initialization }
+PHCArtifactTabbedDefailsPresenter >> initializePresenters [
+	self notebook
+]
+
 { #category : #accessing }
-PHCArtifactDetailsPresenter >> notebook [
+PHCArtifactTabbedDefailsPresenter >> notebook [
 	^notebook ifNil: [ notebook := self newNotebook ]
 ]
 
 { #category : #accessing }
-PHCArtifactDetailsPresenter >> notebook: anObject [
+PHCArtifactTabbedDefailsPresenter >> notebook: anObject [
 	notebook := anObject
 ]
