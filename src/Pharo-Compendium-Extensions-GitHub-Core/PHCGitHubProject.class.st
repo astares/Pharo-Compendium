@@ -3,7 +3,7 @@ A github project
 "
 Class {
 	#name : #PHCGitHubProject,
-	#superclass : #PHCArtifact,
+	#superclass : #PHCGitHubItem,
 	#traits : 'PHCTLoadable + PHCTBrowseable',
 	#classTraits : 'PHCTLoadable classTrait + PHCTBrowseable classTrait',
 	#instVars : [
