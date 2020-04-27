@@ -2,66 +2,67 @@
 Common superclass for artifact stores
 "
 Class {
-	#name : #PHCArtifactRegistry,
+	#name : #PHCArtifactStore,
 	#superclass : #PHCCompendiumItem,
 	#instVars : [
 		'artifacts'
 	],
 	#classVars : [
-		'AllRestries'
+		'AllStores'
 	],
 	#category : #'Pharo-Compendium-Core-Model'
 }
 
 { #category : #accessing }
-PHCArtifactRegistry class >> addRegistry: aRegistryInstance [
-	"Add a new registry instance"
+PHCArtifactStore class >> addStore: aStore [
+	"Add a new store instance"
 	
-	self allRegistries add: aRegistryInstance 
+	self allArtefactStores add: aStore 
 ]
 
 { #category : #accessing }
-PHCArtifactRegistry class >> allRegistries [
+PHCArtifactStore class >> allArtefactStores [
 	"Return a collection of all registries"
-	<script: 'self allRegistries inspect'>
+	<script: 'self allArtefactStores inspect'>
 	
-	^AllRestries ifNil: [ AllRestries := OrderedCollection new ]
+	^AllStores ifNil: [ AllStores := OrderedCollection new ]
 ]
 
 { #category : #'class initialization' }
-PHCArtifactRegistry class >> initialize [
+PHCArtifactStore class >> initialize [
 	"Subclasses should override and call 
 		self registerInstance
+	 to register their artefact store
 	"
 	
 	self registerInstance 
 ]
 
 { #category : #testing }
-PHCArtifactRegistry class >> isAbstract [ 
+PHCArtifactStore class >> isAbstract [ 
 	"Return true if the receiver is abstract, false otherwise"
 	
-	^self == PHCArtifactRegistry 
+	^self == PHCArtifactStore 
 ]
 
 { #category : #registration }
-PHCArtifactRegistry class >> registerInstance [
+PHCArtifactStore class >> registerInstance [
 	"Register an instance of the receiver"
 	
 	self isAbstract ifTrue: [ ^self ].
-	self addRegistry: self new
+	self addStore: self new
 ]
 
 { #category : #'class initialization' }
-PHCArtifactRegistry class >> reset [
+PHCArtifactStore class >> reset [
 	<script>
 	
-	AllRestries := nil.
+	AllStores := nil.
 	self allSubclassesDo: [:each | each registerInstance ]
 ]
 
 { #category : #accessing }
-PHCArtifactRegistry >> artifacts [
+PHCArtifactStore >> artifacts [
 
 	^self subclassResponsibility 
 ]

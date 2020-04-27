@@ -3,7 +3,7 @@ GitHub
 "
 Class {
 	#name : #PHCGitHub,
-	#superclass : #PHCArtifactRegistry,
+	#superclass : #PHCArtifactStore,
 	#traits : 'PHCTBrowseable',
 	#classTraits : 'PHCTBrowseable classTrait',
 	#category : #'Pharo-Compendium-Extensions-GitHub-Core-Model'
@@ -18,7 +18,8 @@ PHCGitHub class >> baseURL [
 
 { #category : #'class initialization' }
 PHCGitHub class >> initialize [
-
+	"Initializes the receiver class - register the artefact store"
+	
 	self registerInstance
 ]
 

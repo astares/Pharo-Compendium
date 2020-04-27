@@ -60,7 +60,7 @@ PHCItemPresenter >> details: anObject [
 
 { #category : #'private - utilities' }
 PHCItemPresenter >> fillTree [
-	tree roots: PHCArtifactRegistry allRegistries.
+	tree roots: PHCArtifactStore allArtefactStores.
 	tree children: [:each | each children ].
 	 
 ]
