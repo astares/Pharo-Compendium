@@ -18,13 +18,6 @@ PHCCompendiumItem class >> named: aName [
 ]
 
 { #category : #testing }
-PHCCompendiumItem >> isBrowseable [
-	"Its not browseable by default"
-	
-	^false
-]
-
-{ #category : #testing }
 PHCCompendiumItem >> isLoadable [
 	"Its not loadable by default"
 	

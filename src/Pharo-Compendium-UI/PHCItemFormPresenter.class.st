@@ -2,7 +2,7 @@
 Common superclass for form based detail presenters
 "
 Class {
-	#name : #PHCArtifactFormPresenter,
+	#name : #PHCItemFormPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'nameLabel',
@@ -15,7 +15,7 @@ Class {
 }
 
 { #category : #specs }
-PHCArtifactFormPresenter class >> defaultSpec [
+PHCItemFormPresenter class >> defaultSpec [
 	
 	^ SpBoxLayout newVertical
 		add:
@@ -27,25 +27,25 @@ PHCArtifactFormPresenter class >> defaultSpec [
 ]
 
 { #category : #showing }
-PHCArtifactFormPresenter class >> open [
+PHCItemFormPresenter class >> open [
 	<script>
 
 	self new openWithSpec
 ]
 
 { #category : #accessing }
-PHCArtifactFormPresenter >> artifact [
+PHCItemFormPresenter >> artifact [
 	^ artifact
 ]
 
 { #category : #accessing }
-PHCArtifactFormPresenter >> artifact: anObject [
+PHCItemFormPresenter >> artifact: anObject [
 	artifact := anObject.
 	self update
 ]
 
 { #category : #'initialize - release' }
-PHCArtifactFormPresenter >> initializePresenters [
+PHCItemFormPresenter >> initializePresenters [
  
 	nameLabel := self newLabel label: 'Name:'.
 	nameInput := self newTextInput.
@@ -56,7 +56,7 @@ PHCArtifactFormPresenter >> initializePresenters [
 ]
 
 { #category : #updating }
-PHCArtifactFormPresenter >> update [
+PHCItemFormPresenter >> update [
 	super update.
 	artifact ifNotNil: [ 
 		nameInput text: artifact name.

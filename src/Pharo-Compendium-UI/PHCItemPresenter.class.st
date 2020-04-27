@@ -2,7 +2,7 @@
 A presenter for available artifact
 "
 Class {
-	#name : #PHCArtifactsPresenter,
+	#name : #PHCItemPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
 		'tree',
@@ -12,29 +12,29 @@ Class {
 }
 
 { #category : #commands }
-PHCArtifactsPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+PHCItemPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
 	rootCommandGroup		 
 		register: (self buildContextualMenuGroupWith: presenterIntance)
 ]
 
 { #category : #commands }
-PHCArtifactsPresenter class >> buildContextualMenuGroupWith: presenterInstance [
+PHCItemPresenter class >> buildContextualMenuGroupWith: presenterInstance [
 	^ (CmCommandGroup named: 'Context Menu') asSpecGroup
 		register: (self buildHandlingGroupWith: presenterInstance);		
 		yourself
 ]
 
 { #category : #commands }
-PHCArtifactsPresenter class >> buildHandlingGroupWith: presenterInstance [
+PHCItemPresenter class >> buildHandlingGroupWith: presenterInstance [
 	^ (CmCommandGroup named: 'Handling') asSpecGroup
 			description: 'Commands related to artifact handling.';
-			register: (PHCBrowseArtifactCommand forSpecContext: presenterInstance);
+			register: (PHCBrowseItemURLCommand forSpecContext: presenterInstance);
 			beDisplayedAsGroup;
 			yourself
 ]
 
 { #category : #specs }
-PHCArtifactsPresenter class >> defaultSpec [
+PHCItemPresenter class >> defaultSpec [
 
 	^ SpPanedLayout newVertical		
 		add: #tree;		
@@ -43,36 +43,36 @@ PHCArtifactsPresenter class >> defaultSpec [
 ]
 
 { #category : #showing }
-PHCArtifactsPresenter class >> open [
+PHCItemPresenter class >> open [
 	<script>
 	self new openWithSpec 
 ]
 
 { #category : #accessing }
-PHCArtifactsPresenter >> details [
+PHCItemPresenter >> details [
 	^ details
 ]
 
 { #category : #accessing }
-PHCArtifactsPresenter >> details: anObject [
+PHCItemPresenter >> details: anObject [
 	details := anObject
 ]
 
 { #category : #'private - utilities' }
-PHCArtifactsPresenter >> fillTree [
+PHCItemPresenter >> fillTree [
 	tree roots: PHCArtifactRegistry allRegistries.
 	tree children: [:each | each children ].
 	 
 ]
 
 { #category : #'private - initialization' }
-PHCArtifactsPresenter >> initializeDetails [
+PHCItemPresenter >> initializeDetails [
 	 
-	 details := self instantiate: PHCArtifactTabbedDefailsPresenter
+	 details := self instantiate: PHCItemTabbedDefailsPresenter
 ]
 
 { #category : #initialization }
-PHCArtifactsPresenter >> initializePresenters [
+PHCItemPresenter >> initializePresenters [
 	self 
 		initializeDetails;
 		initializeTree
@@ -80,7 +80,7 @@ PHCArtifactsPresenter >> initializePresenters [
 ]
 
 { #category : #'private - initialization' }
-PHCArtifactsPresenter >> initializeTree [
+PHCItemPresenter >> initializeTree [
 	 
 	self tree	
 		beSingleSelection; 
@@ -108,13 +108,13 @@ PHCArtifactsPresenter >> initializeTree [
 ]
 
 { #category : #accessing }
-PHCArtifactsPresenter >> selectedArtifact [
+PHCItemPresenter >> selectedItem [
 
 	^self tree selectedItem 
 ]
 
 { #category : #accessing }
-PHCArtifactsPresenter >> tree [
+PHCItemPresenter >> tree [
 
 	^tree ifNil: [ tree := self newTreeTable ]
 ]

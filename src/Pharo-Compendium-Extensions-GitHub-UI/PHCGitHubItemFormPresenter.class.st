@@ -2,8 +2,8 @@
 A general presenter for GitHub artifacts
 "
 Class {
-	#name : #PHCGitHubArtifactFormPresenter,
-	#superclass : #PHCArtifactFormPresenter,
+	#name : #PHCGitHubItemFormPresenter,
+	#superclass : #PHCItemFormPresenter,
 	#instVars : [
 		'urlLabel',
 		'urlInput'
@@ -12,7 +12,7 @@ Class {
 }
 
 { #category : #specs }
-PHCGitHubArtifactFormPresenter class >> defaultSpec [
+PHCGitHubItemFormPresenter class >> defaultSpec [
 	
 	^ SpBoxLayout newVertical
 		add:
@@ -25,14 +25,14 @@ PHCGitHubArtifactFormPresenter class >> defaultSpec [
 ]
 
 { #category : #showing }
-PHCGitHubArtifactFormPresenter class >> open [
+PHCGitHubItemFormPresenter class >> open [
 	<script>
 
 	self new openWithSpec
 ]
 
 { #category : #'initialize - release' }
-PHCGitHubArtifactFormPresenter >> initializePresenters [ 
+PHCGitHubItemFormPresenter >> initializePresenters [ 
 
 	super initializePresenters.
 	urlLabel := self newLabel label: 'URL:'.
@@ -41,7 +41,7 @@ PHCGitHubArtifactFormPresenter >> initializePresenters [
 ]
 
 { #category : #updating }
-PHCGitHubArtifactFormPresenter >> update [
+PHCGitHubItemFormPresenter >> update [
 	super update.
 	artifact ifNotNil: [ urlInput url: artifact url ]
 ]

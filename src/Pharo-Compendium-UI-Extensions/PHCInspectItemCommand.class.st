@@ -2,12 +2,12 @@
 Inspect an artifact for development purpose
 "
 Class {
-	#name : #PHCInspectArtifactCommand,
+	#name : #PHCInspectItemCommand,
 	#superclass : #PHCCommand,
 	#category : #'Pharo-Compendium-UI-Extensions-Commands'
 }
 
 { #category : #executing }
-PHCInspectArtifactCommand >> execute [
+PHCInspectItemCommand >> execute [
 	self context inspect
 ]

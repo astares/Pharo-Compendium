@@ -1,7 +1,7 @@
-Extension { #name : #PHCArtifactsPresenter }
+Extension { #name : #PHCItemPresenter }
 
 { #category : #'*Pharo-Compendium-UI-Extensions' }
-PHCArtifactsPresenter class >> extraCommandsWith: presenter forRootGroup: aCmCommandsGroup [
+PHCItemPresenter class >> extraCommandsWith: presenter forRootGroup: aCmCommandsGroup [
 	"This is an additional extension menu group - only used for development"
 	
 	<extensionCommands>
@@ -10,10 +10,10 @@ PHCArtifactsPresenter class >> extraCommandsWith: presenter forRootGroup: aCmCom
 			((CmCommandGroup named: 'Extra') asSpecGroup
 				description: 'Extra commands to help during development.';
 					register:
-					((PHCInspectArtifactCommand forSpec
-						context: [ presenter selectedArtifact ])
-						name: 'Inspect artifact';
-						description: 'Open an inspector on the selected artifact.';
+					((PHCInspectItemCommand forSpec
+						context: [ presenter selectedItem ])
+						name: 'Inspect item';
+						description: 'Open an inspector on the selected item.';
 						yourself);				 
 				yourself)	
 ]
