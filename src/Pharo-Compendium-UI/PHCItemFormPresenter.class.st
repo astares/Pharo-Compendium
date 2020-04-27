@@ -55,6 +55,12 @@ PHCItemFormPresenter >> initializePresenters [
 	
 ]
 
+{ #category : #accessing }
+PHCItemFormPresenter >> title [
+
+	^'Details for ', artifact name asString
+]
+
 { #category : #updating }
 PHCItemFormPresenter >> update [
 	super update.
