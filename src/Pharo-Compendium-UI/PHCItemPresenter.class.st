@@ -12,9 +12,9 @@ Class {
 }
 
 { #category : #commands }
-PHCItemPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+PHCItemPresenter class >> buildCommandsGroupWith: presenterInstance forRoot: rootCommandGroup [
 	rootCommandGroup		 
-		register: (self buildContextualMenuGroupWith: presenterIntance)
+		register: (self buildContextualMenuGroupWith: presenterInstance)
 ]
 
 { #category : #commands }

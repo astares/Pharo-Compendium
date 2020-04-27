@@ -40,5 +40,6 @@ PHCGitHub >> initialize [
 	"Initializes the receiver"
 	
 	super initialize.
-	self url: self class baseURL
+	self url: self class baseURL.
+	self description: 'All GitHub projects marked with Pharo topic'
 ]
