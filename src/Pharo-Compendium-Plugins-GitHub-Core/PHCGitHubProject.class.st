@@ -11,7 +11,7 @@ Class {
 		'sshURL',
 		'owner'
 	],
-	#category : #'Pharo-Compendium-Extensions-GitHub-Core-Model'
+	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Model'
 }
 
 { #category : #accessing }

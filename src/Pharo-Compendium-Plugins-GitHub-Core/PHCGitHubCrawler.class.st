@@ -10,7 +10,7 @@ Class {
 		'topic',
 		'pageSize'
 	],
-	#category : #'Pharo-Compendium-Extensions-GitHub-Core-Utilities'
+	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Utilities'
 }
 
 { #category : #'private - accessing' }

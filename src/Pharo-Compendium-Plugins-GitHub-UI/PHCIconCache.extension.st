@@ -1,6 +1,6 @@
 Extension { #name : #PHCIconCache }
 
-{ #category : #'*Pharo-Compendium-Extensions-GitHub-UI' }
+{ #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
 PHCIconCache class >> iconPHCGitHubContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABwUlEQVR42oWTTShEURTH72Mm
@@ -15,7 +15,7 @@ ewuaqYnbHpPXlH9ib7vu4JZZ1wIuPXmSP4R5B1EZ7cxr1IUMh/KDHtBLUcqW3wY7IGTlZX0D
 UrutnRjr4WoAAAAASUVORK5CYII='
 ]
 
-{ #category : #'*Pharo-Compendium-Extensions-GitHub-UI' }
+{ #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
 PHCIconCache class >> iconPHCGitHubProjectContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABm0lEQVR42qXT3StDcRgH8O9x
@@ -29,7 +29,7 @@ xkPktZiQWiQhEvQjdOHlObjjOXiC696MnmmvNuCc6yfj9YYmsGWqxMCwTojRii4TBYMQuEOk
 Qn2LxE5WOtqHNvSX6S/1AanN9xGWt9czAAAAAElFTkSuQmCC'
 ]
 
-{ #category : #'*Pharo-Compendium-Extensions-GitHub-UI' }
+{ #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
 PHCIconCache class >> iconPHCGitHubUserContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACDUlEQVR42qWTTUhUURTH//c+

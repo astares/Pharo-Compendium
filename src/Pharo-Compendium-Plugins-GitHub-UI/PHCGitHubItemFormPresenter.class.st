@@ -8,7 +8,7 @@ Class {
 		'urlLabel',
 		'urlInput'
 	],
-	#category : #'Pharo-Compendium-Extensions-GitHub-UI-Components'
+	#category : #'Pharo-Compendium-Plugins-GitHub-UI-Components'
 }
 
 { #category : #specs }
