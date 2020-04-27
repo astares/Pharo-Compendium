@@ -11,6 +11,28 @@ Class {
 	#category : #'Pharo-Compendium-UI-Components'
 }
 
+{ #category : #commands }
+PHCArtifactPresenter class >> buildCommandsGroupWith: presenterIntance forRoot: rootCommandGroup [
+	rootCommandGroup		 
+		register: (self buildContextualMenuGroupWith: presenterIntance)
+]
+
+{ #category : #commands }
+PHCArtifactPresenter class >> buildContextualMenuGroupWith: presenterIntance [
+	^ (CmCommandGroup named: 'Context Menu') asSpecGroup
+		register: (self buildHandlingGroupWith: presenterIntance);		
+		yourself
+]
+
+{ #category : #commands }
+PHCArtifactPresenter class >> buildHandlingGroupWith: presenterIntance [
+	^ (CmCommandGroup named: 'Handling') asSpecGroup
+		description: 'Commands related to artifact handling.';
+		register: PHCBrowseArtifactCommand forSpec;
+		beDisplayedAsGroup;
+		yourself
+]
+
 { #category : #specs }
 PHCArtifactPresenter class >> defaultSpec [
 
