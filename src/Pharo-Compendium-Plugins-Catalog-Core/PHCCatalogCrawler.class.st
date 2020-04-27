@@ -34,8 +34,9 @@ PHCCatalogCrawler >> catalogItemFrom: aDictionary [
 PHCCatalogCrawler >> catalogVersionEntryFrom: each [
 
 	^PHCCatalogPharoVersion new
-		name: each value
-		url: each key
+		name: each value;
+		url: each key;
+		yourself
 ]
 
 { #category : #'private - initialization' }
@@ -48,7 +49,9 @@ PHCCatalogCrawler >> initRepoMappings [
 			at: ('http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo{1}0/main' format: {v})
 			put: ('Pharo{1}.0' format: {v})].
 	repos at: 'http://www.squeaksource.com/MetacelloRepository' put: 'Unsorted'.		
-	^repos
+			
+	^(repos associations collect: [:each | each key -> (self catalogVersionEntryFrom: each) ]	) asDictionary 
+
 ]
 
 { #category : #'initialize - release' }
@@ -64,13 +67,8 @@ PHCCatalogCrawler >> retrieveCatalogItems [
 
 	| src items |
 	src := STON fromString: (ZnEasy get: baseURL) contents.
-	repoMappings collect: [:each | 
-		self catalogVersionEntryFrom: each
-	].
-	
-	items := src collect: [:each | 
-		self catalogItemFrom: each
-	].
-	
-	^items
+	items := src collect: [:each | self catalogItemFrom: each ].
+	items do: [:each | 
+		(repoMappings at: each url) entries add: each ].
+	^repoMappings
 ]
