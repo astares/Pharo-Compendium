@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #default }
-PHCCommand class >> defaultIcon [
+PHCCommand class >> defaultIconName [
 	^nil
 ]
 
@@ -16,14 +16,14 @@ PHCCommand class >> defaultIcon [
 PHCCommand >> asSpecCommand [
 	| command |
 	command := super asSpecCommand.	
-	self defaultIcon
-		ifNotNil: [ :iconName | command icon: iconName ].
+	command iconProvider: PHCIconCache.
+	command iconName: self defaultIconName.
 	^ command
 ]
 
 { #category : #defaults }
-PHCCommand >> defaultIcon [ 
-	^self class defaultIcon
+PHCCommand >> defaultIconName [
+	^self class defaultIconName
 ]
 
 { #category : #executing }

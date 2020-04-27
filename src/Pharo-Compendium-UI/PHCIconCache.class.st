@@ -60,6 +60,12 @@ PHCIconCache class >> iconForClass: aSymbol [
 				fromBinaryStream: (self perform: selector) base64Decoded readStream ]
 ]
 
+{ #category : #accessing }
+PHCIconCache class >> iconNamed: aSymbol [
+
+	^(self iconForClass: aSymbol) ifNil: [ super iconNamed: aSymbol ]
+]
+
 { #category : #'private - icons' }
 PHCIconCache class >> iconPHCCompendiumBrowserContents [
 
