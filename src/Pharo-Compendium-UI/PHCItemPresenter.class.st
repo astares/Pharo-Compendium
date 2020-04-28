@@ -19,18 +19,26 @@ PHCItemPresenter class >> buildCommandsGroupWith: presenterInstance forRoot: roo
 
 { #category : #commands }
 PHCItemPresenter class >> buildContextualMenuGroupWith: presenterInstance [
-	^ (CmCommandGroup named: 'Context Menu') asSpecGroup
-		register: (self buildHandlingGroupWith: presenterInstance);		
+	^ (CmCommandGroup named: 'Context Menu') asSpecGroup		 
+		register: (self buildItemGroupWith: presenterInstance);		
 		yourself
 ]
 
 { #category : #commands }
-PHCItemPresenter class >> buildHandlingGroupWith: presenterInstance [
-	^ (CmCommandGroup named: 'Handling') asSpecGroup
-			description: 'Commands related to artifact handling.';
-			register: (PHCBrowseItemURLCommand forSpecContext: presenterInstance);
-			beDisplayedAsGroup;
-			yourself
+PHCItemPresenter class >> buildItemGroupWith: presenterInstance [
+	| group cmdClass |
+	presenterInstance selectedItem ifNil: [ ^self ].
+	group := (CmCommandGroup named: 'Item') asSpecGroup.
+	group description: 'Commands related to item handling.'.
+	
+	presenterInstance selectedItem class contextCommands do: [:cmdClassSymbol |
+		cmdClass := cmdClassSymbol asClassInEnvironment: self class environment.
+		group register: (cmdClass forSpecContext: presenterInstance)	
+	].
+	
+	^group 
+		beDisplayedAsGroup;
+		yourself
 ]
 
 { #category : #specs }

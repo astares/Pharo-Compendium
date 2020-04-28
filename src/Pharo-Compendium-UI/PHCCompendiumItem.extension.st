@@ -7,6 +7,12 @@ PHCCompendiumItem >> children [
 ]
 
 { #category : #'*Pharo-Compendium-UI' }
+PHCCompendiumItem class >> contextCommands [
+
+	^#()
+]
+
+{ #category : #'*Pharo-Compendium-UI' }
 PHCCompendiumItem class >> detailPresenters [
 
 	^#( PHCItemFormPresenter )
