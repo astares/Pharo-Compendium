@@ -42,8 +42,8 @@ PHCItemFormPresenter >> artifact: anObject [
 { #category : #'initialize - release' }
 PHCItemFormPresenter >> initializePresenters [
  	super initializePresenters.
-	name := self instantiate: (SpLabelledPresenter label: 'Name' input: self newTextInput).
-	description := self instantiate: (SpLabelledPresenter label: 'Description' input: self newTextInput). 
+	name := self instantiate: (SpLabelledPresenter label: 'Name:' input: self newTextInput).
+	description := self instantiate: (SpLabelledPresenter label: 'Description:' input: self newTextInput). 
 	 
 	
 ]
