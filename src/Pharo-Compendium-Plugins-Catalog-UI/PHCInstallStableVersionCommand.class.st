@@ -17,5 +17,13 @@ PHCInstallStableVersionCommand class >> defaultName [
 PHCInstallStableVersionCommand >> execute [
 	"Execute the actions that should be done by the command.
 	 This method expect that the context has been put in #context inst. var. if any context is relevant."
-	1 inspect
+	| catalogEntry |
+	catalogEntry := self context selectedItem.
+	
+	Metacello new
+		repository: catalogEntry url , '/', catalogEntry name;
+		configuration: catalogEntry name;
+		version: #stable;
+		onWarningLog;
+		load
 ]
