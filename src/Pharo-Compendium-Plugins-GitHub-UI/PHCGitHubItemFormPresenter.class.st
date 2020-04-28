@@ -5,8 +5,7 @@ Class {
 	#name : #PHCGitHubItemFormPresenter,
 	#superclass : #PHCItemFormPresenter,
 	#instVars : [
-		'urlLabel',
-		'urlInput'
+		'url'
 	],
 	#category : #'Pharo-Compendium-Plugins-GitHub-UI-Components'
 }
@@ -14,14 +13,9 @@ Class {
 { #category : #specs }
 PHCGitHubItemFormPresenter class >> defaultSpec [
 	
-	^ SpBoxLayout newVertical
-		add:
-			(SpGridLayout new
-				add: #nameLabel at: 1 @ 1; add: #nameInput at: 2 @ 1;
-				add: #descriptionLabel at: 1 @ 2; add: #descriptionInput at: 2 @ 2;
-				add: #urlLabel at: 1 @ 3; add: #urlInput at: 2 @ 3
-			);
-		yourself
+	^ super defaultSpec 
+			add: #url withConstraints: [ :constraints | constraints height: self inputTextHeight ];				 
+			yourself
 ]
 
 { #category : #showing }
@@ -34,14 +28,14 @@ PHCGitHubItemFormPresenter class >> open [
 { #category : #'initialize - release' }
 PHCGitHubItemFormPresenter >> initializePresenters [ 
 
-	super initializePresenters.
-	urlLabel := self newLabel label: 'URL:'.
-	urlInput := self newLink.
+	super initializePresenters.	
+	url := self instantiate: (SpLabelledPresenter label: 'URL:' input: self newLink)
+	
 	
 ]
 
 { #category : #updating }
 PHCGitHubItemFormPresenter >> update [
 	super update.
-	artifact ifNotNil: [ urlInput url: artifact url ]
+	artifact ifNotNil: [ url input url: artifact url ]
 ]

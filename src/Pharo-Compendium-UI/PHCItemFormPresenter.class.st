@@ -5,11 +5,9 @@ Class {
 	#name : #PHCItemFormPresenter,
 	#superclass : #SpPresenter,
 	#instVars : [
-		'nameLabel',
-		'nameInput',
-		'descriptionInput',
-		'descriptionLabel',
-		'artifact'
+		'artifact',
+		'name',
+		'description'
 	],
 	#category : #'Pharo-Compendium-UI-Components'
 }
@@ -18,12 +16,9 @@ Class {
 PHCItemFormPresenter class >> defaultSpec [
 	
 	^ SpBoxLayout newVertical
-		add:
-			(SpGridLayout new
-				add: #nameLabel at: 1 @ 1; add: #nameInput at: 2 @ 1;
-				add: #descriptionLabel at: 1 @ 2; add: #descriptionInput at: 2 @ 2			
-			);
-		yourself
+		 	add: #name withConstraints: [ :constraints | constraints height: self inputTextHeight ];
+			add: #description withConstraints: [ :constraints | constraints height: self inputTextHeight ];			 
+			yourself
 ]
 
 { #category : #showing }
@@ -46,26 +41,24 @@ PHCItemFormPresenter >> artifact: anObject [
 
 { #category : #'initialize - release' }
 PHCItemFormPresenter >> initializePresenters [
- 
-	nameLabel := self newLabel label: 'Name:'.
-	nameInput := self newTextInput.
-	descriptionLabel := self newLabel label: 'Description:'.
-	descriptionInput := self newTextInput.
-	
+ 	super initializePresenters.
+	name := self instantiate: (SpLabelledPresenter label: 'Name' input: self newTextInput).
+	description := self instantiate: (SpLabelledPresenter label: 'Description' input: self newTextInput). 
+	 
 	
 ]
 
 { #category : #accessing }
 PHCItemFormPresenter >> title [
+	^'Details', (artifact ifNil: '' ifNotNil: [ ' for ', artifact name asString ])
 
-	^'Details for ', artifact name asString
 ]
 
 { #category : #updating }
 PHCItemFormPresenter >> update [
 	super update.
 	artifact ifNotNil: [ 
-		nameInput text: artifact name.
-		descriptionInput text: artifact description.	 
+		name input text: artifact name.
+		description input text: artifact description.	 
 	]
 ]
