@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #accessing }
+PHCInstallStableVersionCommand class >> defaultIconName [
+
+	^#glamorousAccept
+]
+
+{ #category : #accessing }
 PHCInstallStableVersionCommand class >> defaultName [
 
 	^'Install stable version'
