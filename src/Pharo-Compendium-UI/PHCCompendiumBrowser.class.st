@@ -70,6 +70,17 @@ PHCCompendiumBrowser >> aboutText [
 (c) 2020 by T.Bergmann, astares.com'
 ]
 
+{ #category : #'private - building - toolbar' }
+PHCCompendiumBrowser >> buildBrowseGitHubPharoTopicBarItem [
+		
+	^ SpToolBarButton new
+		label: 'GitHub';
+		icon: (PHCIconCache iconNamed: #PHCGitHub);
+		help: 'Open all repos with Pharo topic';
+		action: [ self openPharoTopicOnGitHub ];
+		yourself
+]
+
 { #category : #'private - building - menues' }
 PHCCompendiumBrowser >> buildCompendiumMenu [
 
@@ -134,6 +145,7 @@ PHCCompendiumBrowser >> buildStatusBar [
 PHCCompendiumBrowser >> buildToolBar [
 	
 	^ self newToolBar 
+		addItemLeft: self buildBrowseGitHubPharoTopicBarItem;
 		addItemRight: self buildHelpToolBarItem;		
 		addItemRight: self buildSettingsToolBarItem;		 			 			
 		yourself
@@ -190,6 +202,12 @@ PHCCompendiumBrowser >> openHelp [
 	"Open the help system"
 	
 	PHCCompendiumHelp open
+]
+
+{ #category : #actions }
+PHCCompendiumBrowser >> openPharoTopicOnGitHub [ 
+
+	WebBrowser openOn: 'https://github.com/topics/pharo'
 ]
 
 { #category : #actions }
