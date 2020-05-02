@@ -86,7 +86,7 @@ PHCCompendiumBrowser >> buildCompendiumMenu [
 
 	^self newMenu
 		addItem: [ :item | item name: 'Settings...'; action: [ self openSettings ]];	
-		addItem: [ :item | item name: 'Reset Stores...'; action: [ self resetStores ]];	 
+		addItem: [ :item | item name: 'Reset Caches...'; action: [ self resetCaches ]];	 
 		yourself
 ]
 
@@ -217,7 +217,7 @@ PHCCompendiumBrowser >> openSettings [
 ]
 
 { #category : #actions }
-PHCCompendiumBrowser >> resetStores [
+PHCCompendiumBrowser >> resetCaches [
 
 	PHCArtifactStore reset
 ]
