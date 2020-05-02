@@ -37,8 +37,8 @@ PHCCompendiumHelp class >> intro [
 		contents: (self heading: 'Compendium Introduction'),
 		'
 Compendium is a new tool to list, browse and load Pharo artefacts like:
- - Projects
- - Wallpapers
+ - GitHub Projects
+ - Catalog Projects
  - ...
 
 Compendium Repository: 
