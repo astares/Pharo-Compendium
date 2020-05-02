@@ -3,7 +3,7 @@ Extension { #name : #PHCCatalogEntry }
 { #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
 PHCCatalogEntry class >> contextCommands [
 
-	^#(PHCBrowseItemURLCommand PHCInstallStableVersionCommand)
+	^#(PHCBrowseItemURLCommand PHCInstallStableVersionCommand PHCLoadConfigurationCommand)
 ]
 
 { #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
