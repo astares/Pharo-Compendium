@@ -13,6 +13,13 @@ PHCCatalogEntry class >> detailPresenters [
 ]
 
 { #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
+PHCCatalogEntry class >> spotterActivationCommand [
+	"Return the command class used when the item is activated in Spotter"
+	
+	^PHCLoadConfigurationCommand
+]
+
+{ #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
 PHCCatalogEntry >> systemIcon [ 
 
 	^PHCIconCache iconForClass: ((Smalltalk globals includesKey: self packageName asSymbol) 
