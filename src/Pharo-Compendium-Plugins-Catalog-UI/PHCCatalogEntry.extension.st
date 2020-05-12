@@ -16,7 +16,7 @@ PHCCatalogEntry class >> detailPresenters [
 PHCCatalogEntry class >> spotterActivationCommand [
 	"Return the command class used when the item is activated in Spotter"
 	
-	^PHCLoadConfigurationCommand
+	^PHCInstallStableVersionCommand
 ]
 
 { #category : #'*Pharo-Compendium-Plugins-Catalog-UI' }
