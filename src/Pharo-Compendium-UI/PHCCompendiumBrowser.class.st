@@ -73,7 +73,7 @@ PHCCompendiumBrowser >> aboutText [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildBrowseGitHubPharoTopicBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'GitHub';
 		icon: (PHCIconCache iconNamed: #PHCGitHub);
 		help: 'Open all repos with Pharo topic';
@@ -102,7 +102,7 @@ PHCCompendiumBrowser >> buildHelpMenu [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildHelpToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Help';
 		icon: (HelpBrowser iconNamed: #smallHelpIcon);
 		help: 'Open help';
@@ -127,7 +127,7 @@ PHCCompendiumBrowser >> buildMenuBar [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildSettingsToolBarItem [
 		
-	^ SpToolBarButton new
+	^ SpToolBarButtonPresenter new
 		label: 'Settings';
 		icon: (SettingBrowser iconNamed: #smallConfigurationIcon);
 		help: 'Open settings';
