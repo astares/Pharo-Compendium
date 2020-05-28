@@ -16,6 +16,6 @@ PHCGitHubItem class >> detailPresenters [
 PHCGitHubItem class >> systemIcon [
 	
 	^PHCIconCache iconForClass: (self isAbstract 
-											ifTrue: [ #PHCGitHub ]
+											ifTrue: [ #PHCGitHubStore ]
 											ifFalse: [ self name asSymbol ])
 ]

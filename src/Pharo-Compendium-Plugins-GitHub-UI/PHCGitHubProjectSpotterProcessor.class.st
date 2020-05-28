@@ -16,7 +16,7 @@ PHCGitHubProjectSpotterProcessor class >> title [
 { #category : #accessing }
 PHCGitHubProjectSpotterProcessor >> collection [ 
 	| catalogStore |
-	catalogStore := PHCArtifactStore allArtefactStores detect: [:each | each class = PHCGitHub ] ifNone: [ ^#() ].	 
+	catalogStore := PHCArtifactStore allArtefactStores detect: [:each | each class = PHCGitHubStore ] ifNone: [ ^#() ].	 
 	^catalogStore children  
 ]
 

@@ -75,7 +75,7 @@ PHCCompendiumBrowser >> buildBrowseGitHubPharoTopicBarItem [
 		
 	^ SpToolBarButtonPresenter new
 		label: 'GitHub';
-		icon: (PHCIconCache iconNamed: #PHCGitHub);
+		icon: (PHCIconCache iconNamed: #PHCGitHubStore);
 		help: 'Open all repos with Pharo topic';
 		action: [ self openPharoTopicOnGitHub ];
 		yourself

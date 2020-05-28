@@ -2,7 +2,7 @@
 GitHub
 "
 Class {
-	#name : #PHCGitHub,
+	#name : #PHCGitHubStore,
 	#superclass : #PHCArtifactStore,
 	#traits : 'PHCTBrowseable',
 	#classTraits : 'PHCTBrowseable classTrait',
@@ -10,36 +10,30 @@ Class {
 }
 
 { #category : #accessing }
-PHCGitHub class >> baseURL [
+PHCGitHubStore class >> baseURL [
 	"Return the GitHub base URL"
 	
 	^'http://www.github.com'
 ]
 
-{ #category : #'class initialization' }
-PHCGitHub class >> initialize [
-	"Initializes the receiver class - register the artefact store"
+{ #category : #testing }
+PHCGitHubStore class >> isAbstract [ 
+	"Return true if the receiver is abstract, false otherwise"
 	
-	self registerInstance
+	^self == PHCGitHubStore
 ]
 
 { #category : #artefacts }
-PHCGitHub >> artifacts [
+PHCGitHubStore >> artifacts [
 
 	^artifacts ifNil: [ artifacts := PHCGitHubCrawler new retrieveRepositories ]
 ]
 
-{ #category : #accessing }
-PHCGitHub >> defaultName [
-
-	^'GitHub - By Repository'
-]
-
 { #category : #initialization }
-PHCGitHub >> initialize [
+PHCGitHubStore >> initialize [
 	"Initializes the receiver"
 	
 	super initialize.
 	self url: self class baseURL.
-	self description: 'All GitHub projects marked with Pharo topic'
+
 ]

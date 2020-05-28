@@ -1,6 +1,9 @@
+"
+Items by Author
+"
 Class {
 	#name : #PHCGitHubByAuthor,
-	#superclass : #PHCGitHub,
+	#superclass : #PHCGitHubStore,
 	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Model'
 }
 
@@ -11,14 +14,15 @@ PHCGitHubByAuthor class >> initialize [
 	self registerInstance
 ]
 
-{ #category : #'class initialization' }
-PHCGitHubByAuthor class >> systemIcon [
-
-	^PHCIconCache iconForClass: self superclass name asSymbol
-]
-
 { #category : #accessing }
 PHCGitHubByAuthor >> defaultName [
 
 	^'GitHub - By Author'
+]
+
+{ #category : #initialization }
+PHCGitHubByAuthor >> initialize [
+
+	super initialize.
+	self description: 'All GitHub projects marked with Pharo topic'
 ]

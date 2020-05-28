@@ -1,12 +1,12 @@
-Extension { #name : #PHCGitHub }
+Extension { #name : #PHCGitHubStore }
 
 { #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
-PHCGitHub class >> contextCommands [
+PHCGitHubStore class >> contextCommands [
 
 	^#(PHCBrowseItemURLCommand)
 ]
 
 { #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
-PHCGitHub class >> systemIcon [ 
+PHCGitHubStore class >> systemIcon [ 
 	^PHCIconCache iconForClass: self name asSymbol
 ]
