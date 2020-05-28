@@ -34,6 +34,12 @@ PHCGitHubCrawler class >> allRepositories [
 	^AllRepositories ifNil: [ AllRepositories := self new retrieveRepositoriesFor: 'pharo' ]
 ]
 
+{ #category : #accessing }
+PHCGitHubCrawler class >> resetDataCache [ 
+
+	AllRepositories := nil
+]
+
 { #category : #'private - accessing' }
 PHCGitHubCrawler >> baseURL [
 	^ baseURL

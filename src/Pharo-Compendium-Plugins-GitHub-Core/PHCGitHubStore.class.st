@@ -23,6 +23,12 @@ PHCGitHubStore class >> isAbstract [
 	^self == PHCGitHubStore
 ]
 
+{ #category : #testing }
+PHCGitHubStore class >> resetStore [
+
+	PHCGitHubCrawler resetDataCache
+]
+
 { #category : #artefacts }
 PHCGitHubStore >> artifacts [
 
