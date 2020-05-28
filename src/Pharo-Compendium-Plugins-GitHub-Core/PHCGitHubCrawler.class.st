@@ -7,11 +7,32 @@ Class {
 	#instVars : [
 		'baseURL',
 		'client',
-		'topic',
 		'pageSize'
+	],
+	#classVars : [
+		'AllRepositories'
 	],
 	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Utilities'
 }
+
+{ #category : #accessing }
+PHCGitHubCrawler class >> allGitHubUsers [
+
+	| users |	
+	users := Set new.
+	self allRepositories do: [:each | 
+		|new|		
+		new := each owner copy.
+		new repositories add: (each copy owner: new).
+		new ].
+	^users asSortedCollection: [:a :b | a name asLowercase < b name asLowercase ]
+]
+
+{ #category : #accessing }
+PHCGitHubCrawler class >> allRepositories [
+
+	^AllRepositories ifNil: [ AllRepositories := self new retrieveRepositoriesFor: 'pharo' ]
+]
 
 { #category : #'private - accessing' }
 PHCGitHubCrawler >> baseURL [
@@ -70,8 +91,7 @@ PHCGitHubCrawler >> gitHubUserFrom: aDictionary [
 PHCGitHubCrawler >> initialize [
 	super initialize.
 	client := self createNewClient.
-	baseURL := 'https://api.github.com'.	
-	topic := 'pharo'.
+	baseURL := 'https://api.github.com'.		 
 	pageSize := 100.
 
 ]
@@ -128,22 +148,12 @@ PHCGitHubCrawler >> retrieveItemsFor: anItemType query: aQuery using: aBlock [
 ]
 
 { #category : #'private - crawling' }
-PHCGitHubCrawler >> retrieveRepositories [
+PHCGitHubCrawler >> retrieveRepositoriesFor: aTopic [
 	| repos query |
-	query := 'language:smalltalk+topic:', topic. 
+	query := 'language:smalltalk+topic:', aTopic. 
 	 
 	repos := self retrieveItemsFor: 'repositories' query: query using: [:each | 
 		self gitHubRepositoryFrom: each
 	].
 	^repos sorted: [:a :b | a name < b name ]
-]
-
-{ #category : #accessing }
-PHCGitHubCrawler >> topic [
-	^ topic
-]
-
-{ #category : #accessing }
-PHCGitHubCrawler >> topic: anObject [
-	topic := anObject
 ]

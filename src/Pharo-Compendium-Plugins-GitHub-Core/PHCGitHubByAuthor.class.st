@@ -15,6 +15,12 @@ PHCGitHubByAuthor class >> initialize [
 ]
 
 { #category : #accessing }
+PHCGitHubByAuthor >> defaultArtifacts [
+
+	^PHCGitHubCrawler allGitHubUsers
+]
+
+{ #category : #accessing }
 PHCGitHubByAuthor >> defaultName [
 
 	^'GitHub - By Author'

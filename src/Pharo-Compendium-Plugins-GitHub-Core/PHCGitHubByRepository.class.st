@@ -4,7 +4,7 @@ Items per repository
 Class {
 	#name : #PHCGitHubByRepository,
 	#superclass : #PHCGitHubStore,
-	#category : #'Pharo-Compendium-Plugins-GitHub-Core'
+	#category : #'Pharo-Compendium-Plugins-GitHub-Core-Model'
 }
 
 { #category : #'class initialization' }

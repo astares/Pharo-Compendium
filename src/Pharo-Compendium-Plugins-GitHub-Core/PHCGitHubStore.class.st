@@ -26,7 +26,13 @@ PHCGitHubStore class >> isAbstract [
 { #category : #artefacts }
 PHCGitHubStore >> artifacts [
 
-	^artifacts ifNil: [ artifacts := PHCGitHubCrawler new retrieveRepositories ]
+	^artifacts ifNil: [ artifacts := self defaultArtifacts ]
+]
+
+{ #category : #artefacts }
+PHCGitHubStore >> defaultArtifacts [
+
+	^PHCGitHubCrawler allRepositories
 ]
 
 { #category : #initialization }
