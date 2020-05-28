@@ -32,7 +32,7 @@ PHCGitHub >> artifacts [
 { #category : #accessing }
 PHCGitHub >> defaultName [
 
-	^'GitHub'
+	^'GitHub - By Repository'
 ]
 
 { #category : #initialization }

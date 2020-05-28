@@ -16,3 +16,9 @@ PHCGitHubByAuthor class >> systemIcon [
 
 	^PHCIconCache iconForClass: self superclass name asSymbol
 ]
+
+{ #category : #accessing }
+PHCGitHubByAuthor >> defaultName [
+
+	^'GitHub - By Author'
+]
