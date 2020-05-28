@@ -2,7 +2,7 @@
 A github project
 "
 Class {
-	#name : #PHCGitHubProject,
+	#name : #PHCGitHubRepository,
 	#superclass : #PHCGitHubItem,
 	#traits : 'PHCTLoadable + PHCTBrowseable',
 	#classTraits : 'PHCTLoadable classTrait + PHCTBrowseable classTrait',
@@ -15,31 +15,31 @@ Class {
 }
 
 { #category : #accessing }
-PHCGitHubProject >> cloneURL [
+PHCGitHubRepository >> cloneURL [
 	^ cloneURL
 ]
 
 { #category : #accessing }
-PHCGitHubProject >> cloneURL: anObject [
+PHCGitHubRepository >> cloneURL: anObject [
 	cloneURL := anObject
 ]
 
 { #category : #accessing }
-PHCGitHubProject >> owner [
+PHCGitHubRepository >> owner [
 	^ owner
 ]
 
 { #category : #accessing }
-PHCGitHubProject >> owner: anObject [
+PHCGitHubRepository >> owner: anObject [
 	owner := anObject
 ]
 
 { #category : #accessing }
-PHCGitHubProject >> sshURL [
+PHCGitHubRepository >> sshURL [
 	^ sshURL
 ]
 
 { #category : #accessing }
-PHCGitHubProject >> sshURL: anObject [
+PHCGitHubRepository >> sshURL: anObject [
 	sshURL := anObject
 ]

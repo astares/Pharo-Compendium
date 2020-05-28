@@ -61,6 +61,13 @@ PHCArtifactStore class >> reset [
 	self allSubclassesDo: [:each | each registerInstance ]
 ]
 
+{ #category : #'class initialization' }
+PHCArtifactStore class >> resetStore [
+	"Subclasses may override to additionally reset the store"
+	
+	self registerInstance
+]
+
 { #category : #accessing }
 PHCArtifactStore >> artifacts [
 

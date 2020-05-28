@@ -16,7 +16,7 @@ UrutnRjr4WoAAAAASUVORK5CYII='
 ]
 
 { #category : #'*Pharo-Compendium-Plugins-GitHub-UI' }
-PHCIconCache class >> iconPHCGitHubProjectContents [
+PHCIconCache class >> iconPHCGitHubRepositoryContents [
 
 	^'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABm0lEQVR42qXT3StDcRgH8O9x
 vKeGKUps3q44XiNjRzbkSlzIndz6L5DxD7hz4Q9wxYWXJJLkwmyLklGKIa/bvLVx7DyeNWnR

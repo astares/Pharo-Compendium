@@ -42,13 +42,28 @@ PHCGitHubCrawler >> createNewClient [
 		yourself
 ]
 
-{ #category : #crawling }
-PHCGitHubCrawler >> gitHubUserFrom: each [
+{ #category : #'private - reading' }
+PHCGitHubCrawler >> gitHubRepositoryFrom: aDictionary [
+
+	^PHCGitHubRepository new
+				id: (aDictionary at: 'id');
+				name: (aDictionary at: 'name');
+				description: (aDictionary at: 'description');
+				url: (aDictionary at: 'html_url');
+				owner: (self gitHubUserFrom: (aDictionary at: 'owner'));
+				sshURL: (aDictionary at: 'ssh_url');
+				cloneURL: (aDictionary at: 'clone_url');
+				yourself
+]
+
+{ #category : #'private - reading' }
+PHCGitHubCrawler >> gitHubUserFrom: aDictionary [
 
 	^PHCGitHubUser new
-		id: (each at: 'id');
-		name: (each at: 'login');
-		url: (each at: 'html_url')
+		id: (aDictionary at: 'id');
+		name: (aDictionary at: 'login');
+		url: (aDictionary at: 'html_url');
+		yourself
 ]
 
 { #category : #initialization }
@@ -112,22 +127,13 @@ PHCGitHubCrawler >> retrieveItemsFor: anItemType query: aQuery using: aBlock [
 	^coll
 ]
 
-{ #category : #crawling }
+{ #category : #'private - crawling' }
 PHCGitHubCrawler >> retrieveRepositories [
 	| repos query |
 	query := 'language:smalltalk+topic:', topic. 
 	 
 	repos := self retrieveItemsFor: 'repositories' query: query using: [:each | 
-		 
-			PHCGitHubProject new
-				id: (each at: 'id');
-				name: (each at: 'name');
-				description: (each at: 'description');
-				url: (each at: 'html_url');
-				owner: (self gitHubUserFrom: (each at: 'owner'));
-				sshURL: (each at: 'ssh_url');
-				cloneURL: (each at: 'clone_url');
-				yourself
+		self gitHubRepositoryFrom: each
 	].
 	^repos sorted: [:a :b | a name < b name ]
 ]
