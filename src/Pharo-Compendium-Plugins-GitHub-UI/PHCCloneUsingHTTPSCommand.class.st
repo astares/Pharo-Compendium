@@ -26,7 +26,7 @@ PHCCloneUsingHTTPSCommand >> execute [
 	
 	[
 	rep := IceRepositoryCreator new
-  	url: 'https://github.com/',catalogEntry owner name,'/',catalogEntry name,'.git';
+  	url: catalogEntry cloneURL;
   	createRepository ]
 		on: IceDuplicatedRepository 
 		do: [ :e | ^self inform: 'You already have an existing clone' ].
