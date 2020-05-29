@@ -7,7 +7,8 @@ Class {
 	#instVars : [
 		'baseURL',
 		'client',
-		'pageSize'
+		'pageSize',
+		'userMappings'
 	],
 	#classVars : [
 		'AllRepositories'
@@ -18,14 +19,16 @@ Class {
 { #category : #accessing }
 PHCGitHubCrawler class >> allGitHubUsers [
 
-	| users |	
-	users := Set new.
+	| users cp |	
+	users := Dictionary new.
 	self allRepositories do: [:each | 
 		|new|		
-		new := each owner copy.
-		new repositories add: (each copy owner: new).
-		new ].
-	^users asSortedCollection: [:a :b | a name asLowercase < b name asLowercase ]
+		new := users at: each owner id ifAbsentPut: [ each owner copy ].
+		cp := each copy.
+		new repositories add: cp.
+		cp owner: nil. "Set to nil so we do not dive in again"
+	].
+	^users values asSortedCollection: [:a :b | a name asLowercase < b name asLowercase ]
 ]
 
 { #category : #accessing }
@@ -86,11 +89,15 @@ PHCGitHubCrawler >> gitHubRepositoryFrom: aDictionary [
 { #category : #'private - reading' }
 PHCGitHubCrawler >> gitHubUserFrom: aDictionary [
 
-	^PHCGitHubUser new
-		id: (aDictionary at: 'id');
-		name: (aDictionary at: 'login');
-		url: (aDictionary at: 'html_url');
-		yourself
+	| id |
+	id := aDictionary at: 'id'.
+	^userMappings at: id ifAbsentPut: [
+		PHCGitHubUser new
+			id: id;
+			name: (aDictionary at: 'login');
+			url: (aDictionary at: 'html_url');
+			yourself]
+	
 ]
 
 { #category : #initialization }
@@ -99,7 +106,7 @@ PHCGitHubCrawler >> initialize [
 	client := self createNewClient.
 	baseURL := 'https://api.github.com'.		 
 	pageSize := 100.
-
+	userMappings := Dictionary new
 ]
 
 { #category : #utilities }
@@ -109,7 +116,7 @@ PHCGitHubCrawler >> numberOfItemsFor: anItemType using: aQuery [
 	| response |
 	response := ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1'.
 	response isSuccess ifFalse: [ 0 ].
-	^(STON fromString: response contents) at: 'total_count'
+	^(STON fromString: response contents) at: 'total_count' ifAbsent: [ 0 ]
 	 
 ]
 
@@ -161,5 +168,6 @@ PHCGitHubCrawler >> retrieveRepositoriesFor: aTopic [
 	repos := self retrieveItemsFor: 'repositories' query: query using: [:each | 
 		self gitHubRepositoryFrom: each
 	].
+
 	^repos sorted: [:a :b | a name < b name ]
 ]

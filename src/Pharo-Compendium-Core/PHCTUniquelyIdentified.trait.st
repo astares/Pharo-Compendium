@@ -15,10 +15,23 @@ PHCTUniquelyIdentified classSide >> generateUniqueID [
 	^UUID new asString copyReplaceAll: '-' with: ''
 ]
 
+{ #category : #comparing }
+PHCTUniquelyIdentified >> = anotherObject [
+	^anotherObject class == self class
+		and: [ anotherObject id = self id ]
+	
+]
+
 { #category : #'private - utilities' }
 PHCTUniquelyIdentified >> generateUniqueID [
 
 	^self class generateUniqueID
+]
+
+{ #category : #comparing }
+PHCTUniquelyIdentified >> hash [
+
+	^id hash 
 ]
 
 { #category : #accessing }

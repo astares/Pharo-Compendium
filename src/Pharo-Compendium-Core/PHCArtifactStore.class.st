@@ -58,7 +58,9 @@ PHCArtifactStore class >> reset [
 	<script>
 	
 	AllStores := nil.
-	self allSubclassesDo: [:each | each registerInstance ]
+	self allSubclassesDo: [:each | 
+		each resetStore.
+	]
 ]
 
 { #category : #'class initialization' }
