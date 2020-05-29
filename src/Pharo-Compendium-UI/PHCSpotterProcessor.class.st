@@ -27,8 +27,10 @@ PHCSpotterProcessor class >> title [
 
 { #category : #accessing }
 PHCSpotterProcessor >> collection [
-
-	^ PHCArtifactStore allArtefactStores
+	|coll|
+	coll := OrderedCollection new.
+	PHCArtifactStore allArtefactStores do: [:each | coll addAll: each children ].
+	^coll
 ]
 
 { #category : #filtering }
