@@ -73,7 +73,7 @@ PHCCompendiumBrowser >> aboutText [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildBrowseGitHubPharoTopicBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'GitHub';
 		icon: (PHCIconCache iconNamed: #PHCGitHubStore);
 		help: 'Open all repos with Pharo topic';
@@ -102,7 +102,7 @@ PHCCompendiumBrowser >> buildHelpMenu [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildHelpToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Help';
 		icon: (HelpBrowser iconNamed: #smallHelpIcon);
 		help: 'Open help';
@@ -127,7 +127,7 @@ PHCCompendiumBrowser >> buildMenuBar [
 { #category : #'private - building - toolbar' }
 PHCCompendiumBrowser >> buildSettingsToolBarItem [
 		
-	^ SpToolBarButtonPresenter new
+	^ SpToolbarButtonPresenter new
 		label: 'Settings';
 		icon: (SettingBrowser iconNamed: #smallConfigurationIcon);
 		help: 'Open settings';
@@ -144,7 +144,7 @@ PHCCompendiumBrowser >> buildStatusBar [
 { #category : #'private - building' }
 PHCCompendiumBrowser >> buildToolBar [
 	
-	^ self newToolBar 
+	^ self newToolbar 
 		addItemLeft: self buildBrowseGitHubPharoTopicBarItem;
 		addItemRight: self buildHelpToolBarItem;		
 		addItemRight: self buildSettingsToolBarItem;		 			 			
@@ -172,7 +172,7 @@ PHCCompendiumBrowser >> initializeWindow: aWindowPresenter [
 	super initializeWindow: aWindowPresenter.
 	aWindowPresenter
 		menu: (menu := self buildMenuBar);
-		toolBar: (toolBar := self buildToolBar);
+		toolbar: (toolBar := self buildToolBar);
 		statusBar: (statusBar := self buildStatusBar).
 
 	self statusBar pushMessage: 'Ready'	
