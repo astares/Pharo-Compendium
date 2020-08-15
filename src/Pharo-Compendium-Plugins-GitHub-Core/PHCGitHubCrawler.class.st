@@ -114,8 +114,9 @@ PHCGitHubCrawler >> numberOfItemsFor: anItemType using: aQuery [
 	"anItem needs to be users or repositories"
 	
 	| response |
-	response := ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1'.
-	response isSuccess ifFalse: [ 0 ].
+	response := [ ZnEasy get: baseURL, '/search/',anItemType,'?q=',aQuery,'&per_page=1&page=1']
+		on: NameLookupFailure do: [^0].
+	response isSuccess ifFalse: [ ^0 ].
 	^(STON fromString: response contents) at: 'total_count' ifAbsent: [ 0 ]
 	 
 ]
@@ -141,6 +142,7 @@ PHCGitHubCrawler >> retrieveItemsFor: anItemType query: aQuery using: aBlock [
 	coll := OrderedCollection new.	
 	current := 0.
 	total := self numberOfItemsFor: anItemType using: aQuery.
+	total = 0 ifTrue: [ ^coll ].
 	progressBlock := [:el |
 							current := current + 1.
 							HTTPProgress signal: 'Retrieving...' amount: current total: total.

@@ -67,7 +67,7 @@ PHCCatalogCrawler >> initialize [
 PHCCatalogCrawler >> retrieveCatalogPharoVersions [
 
 	| src items |
-	src := STON fromString: (ZnEasy get: baseURL) contents.
+	src := [ STON fromString: (ZnEasy get: baseURL) contents ] on: NameLookupFailure do: [ ^repoMappings].
 	items := src collect: [:each | self catalogItemFrom: each ].
 	
 	"Add entry to the appropriate Pharo version"
