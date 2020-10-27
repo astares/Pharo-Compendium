@@ -14,12 +14,6 @@ PHCCompendiumHelp class >> bookName [
 	^ 'Compendium'
 ]
 
-{ #category : #'class initialization' }
-PHCCompendiumHelp class >> initialize [
-
-	self resetSystemHelp
-]
-
 { #category : #'accessing - pages' }
 PHCCompendiumHelp class >> intro [
 	^ HelpTopic 
@@ -46,11 +40,4 @@ PHCCompendiumHelp class >> open [
 { #category : #showing }
 PHCCompendiumHelp class >> pages [
 	^ #(intro )
-]
-
-{ #category : #'private - initialization' }
-PHCCompendiumHelp class >> resetSystemHelp [
-	"Reset the (cached) system help so we appear there too"
-	<script>
-	SystemHelp resetHelpTopic
 ]
