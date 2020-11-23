@@ -18,7 +18,7 @@ PHCWallpaperRegistry class >> initialize [
 { #category : #accessing }
 PHCWallpaperRegistry >> artifacts [
 
-	^#()
+	^PHCWallpaperCrawler wallpapersForURL: self url
 ]
 
 { #category : #defaults }

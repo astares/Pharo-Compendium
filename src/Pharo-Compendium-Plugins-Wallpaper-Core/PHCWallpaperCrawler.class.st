@@ -4,19 +4,21 @@ Utility class to crawl wallpaper registry items
 Class {
 	#name : #PHCWallpaperCrawler,
 	#superclass : #Object,
+	#classVars : [
+		'Cache'
+	],
 	#category : #'Pharo-Compendium-Plugins-Wallpaper-Core-Utilities'
 }
 
-{ #category : #utilities }
+{ #category : #accessing }
 PHCWallpaperCrawler class >> cache [
 
-	^ Dictionary new
+	^ Cache ifNil: [ Cache := Dictionary new ]
 ]
 
 { #category : #examples }
 PHCWallpaperCrawler class >> example [
 	
-
 	 ^(self wallpapersForURL: 'https://raw.githubusercontent.com/pharo-compendium/pharo-registry-wallpapers/main/registry/wallpaper.json') inspect
 ]
 

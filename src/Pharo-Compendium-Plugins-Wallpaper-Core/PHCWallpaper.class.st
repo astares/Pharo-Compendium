@@ -3,9 +3,9 @@ A reference to an online wallpaper file
 "
 Class {
 	#name : #PHCWallpaper,
-	#superclass : #Object,
-	#traits : 'PHCTBrowseable + PHCTDescribed + PHCTNamed + PHCTSized',
-	#classTraits : 'PHCTBrowseable classTrait + PHCTDescribed classTrait + PHCTNamed classTrait + PHCTSized classTrait',
+	#superclass : #PHCCompendiumItem,
+	#traits : 'PHCTBrowseable + PHCTSized',
+	#classTraits : 'PHCTBrowseable classTrait + PHCTSized classTrait',
 	#instVars : [
 		'imageURL',
 		'size'
