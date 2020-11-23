@@ -1,3 +1,6 @@
+"
+Utility class to crawl wallpaper registry items
+"
 Class {
 	#name : #PHCWallpaperCrawler,
 	#superclass : #Object,

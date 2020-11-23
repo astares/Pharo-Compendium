@@ -4,8 +4,8 @@ A reference to an online wallpaper file
 Class {
 	#name : #PHCWallpaper,
 	#superclass : #Object,
-	#traits : 'PHCTBrowseable + PHCTDescribed + PHCTNamed',
-	#classTraits : 'PHCTBrowseable classTrait + PHCTDescribed classTrait + PHCTNamed classTrait',
+	#traits : 'PHCTBrowseable + PHCTDescribed + PHCTNamed + PHCTSized',
+	#classTraits : 'PHCTBrowseable classTrait + PHCTDescribed classTrait + PHCTNamed classTrait + PHCTSized classTrait',
 	#instVars : [
 		'imageURL',
 		'size'
@@ -13,7 +13,7 @@ Class {
 	#category : #'Pharo-Compendium-Plugins-Wallpaper-Core-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #'instance creation' }
 PHCWallpaper class >> fromDictionary: aCollection [ 
 
 	^ (self new)
@@ -25,7 +25,12 @@ PHCWallpaper class >> fromDictionary: aCollection [
 			yourself
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+PHCWallpaper >> imageURL [
+	^ imageURL
+]
+
+{ #category : #accessing }
 PHCWallpaper >> imageURL: aString [ 
 	imageURL := aString
 ]
