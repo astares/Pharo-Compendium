@@ -25,6 +25,17 @@ PHCWallpaper class >> fromDictionary: aCollection [
 			yourself
 ]
 
+{ #category : #utilities }
+PHCWallpaper >> downloadImage [
+
+	| ref |
+	url := ZnUrl fromString: self imageURL.
+
+	ref := url segments last.
+	(ref endsWith: '.png') ifFalse: [ ^ZnEasy getJpeg: self imageURL ].
+	^ZnEasy getPng: self imageURL
+]
+
 { #category : #accessing }
 PHCWallpaper >> imageURL [
 	^ imageURL
