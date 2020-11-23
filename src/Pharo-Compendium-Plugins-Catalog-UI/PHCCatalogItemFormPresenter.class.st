@@ -30,9 +30,9 @@ PHCCatalogItemFormPresenter class >> defaultSpec [
 PHCCatalogItemFormPresenter >> initializePresenters [ 
 
 	super initializePresenters.
-	contactInfo := self instantiate: (SpLabelledPresenter label: 'Contact Info:' input: self newTextInput).
-	keywords := self instantiate: (SpLabelledPresenter label: 'Keywords:' input: self newTextInput).
-	packageName := self instantiate: (SpLabelledPresenter label: 'Package Name:' input: self newTextInput).
+	contactInfo := self instantiate: (SpLabelledPresenter label: 'Contact Info:' input: self newReadOnlyTextInput).
+	keywords := self instantiate: (SpLabelledPresenter label: 'Keywords:' input: self newReadOnlyTextInput).
+	packageName := self instantiate: (SpLabelledPresenter label: 'Package Name:' input: self newReadOnlyTextInput).
 	url := self instantiate: (SpLabelledPresenter label: 'URL:' input: self newLink)
 	
 ]
